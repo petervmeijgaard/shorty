@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: src/app
+      dockerfile: Dockerfile
+      target: local
+      args:
+        USERID: ${USERID:-1000}
+        GROUPID: ${GROUPID:-1000}
+    networks:
+      default:
+        aliases:
+          - www.url-shortener.local
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.url-shortener-app.rule=Host(`www.url-shortener.local`)"
+      - "traefik.http.routers.url-shortener-app.entrypoints=web"
+      - "traefik.http.services.url-shortener-app.loadbalancer.server.port=3000"
+    volumes:
+      - ./src/app:/var/www:delegated
+networks:
+  default:
+    name: url-shortener
+    driver: bridge
+    ipam:
+      driver: default
