@@ -9,7 +9,7 @@ export const NotFound: NextPage = () => (
       <title>404 - Not Found</title>
     </Head>
     <Card className="w-1/2">
-      <ErrorNotification>
+      <ErrorNotification className="flex-col">
         <div className="flex flex-1 font-bold">
           Whoops! Something went wrong
         </div>
