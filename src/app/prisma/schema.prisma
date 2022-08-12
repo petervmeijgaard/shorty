@@ -10,6 +10,10 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Example {
-    id String @id @default(cuid())
+model Url {
+    id        String @id @default(cuid())
+    url       String
+    shortUrl  String @map("short_url")
+
+    @@map("urls")
 }
