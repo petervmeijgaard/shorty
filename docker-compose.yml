@@ -11,17 +11,17 @@ services:
     networks:
       default:
         aliases:
-          - www.url-shortener.local
+          - www.shorty.local
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.url-shortener-app.rule=Host(`www.url-shortener.local`)"
-      - "traefik.http.routers.url-shortener-app.entrypoints=web"
-      - "traefik.http.services.url-shortener-app.loadbalancer.server.port=3000"
+      - "traefik.http.routers.shorty-app.rule=Host(`www.shorty.local`)"
+      - "traefik.http.routers.shorty-app.entrypoints=web"
+      - "traefik.http.services.shorty-app.loadbalancer.server.port=3000"
     volumes:
       - ./src/app:/var/www:delegated
 networks:
   default:
-    name: url-shortener
+    name: shorty
     driver: bridge
     ipam:
       driver: default

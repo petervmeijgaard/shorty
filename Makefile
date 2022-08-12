@@ -5,12 +5,12 @@
 info: intro do-show-commands
 intro:
 	@echo ""
-	@echo " ██╗   ██╗██████╗ ██╗         ███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗███████╗███╗   ██╗███████╗██████╗  "
-	@echo " ██║   ██║██╔══██╗██║         ██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝████╗  ██║██╔════╝██╔══██╗ "
-	@echo " ██║   ██║██████╔╝██║         ███████╗███████║██║   ██║██████╔╝   ██║   █████╗  ██╔██╗ ██║█████╗  ██████╔╝ "
-	@echo " ██║   ██║██╔══██╗██║         ╚════██║██╔══██║██║   ██║██╔══██╗   ██║   ██╔══╝  ██║╚██╗██║██╔══╝  ██╔══██╗ "
-	@echo " ╚██████╔╝██║  ██║███████╗    ███████║██║  ██║╚██████╔╝██║  ██║   ██║   ███████╗██║ ╚████║███████╗██║  ██║ "
-	@echo "  ╚═════╝ ╚═╝  ╚═╝╚══════╝    ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ "
+	@echo " ███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗██╗   ██╗ "
+	@echo " ██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝╚██╗ ██╔╝ "
+	@echo " ███████╗███████║██║   ██║██████╔╝   ██║    ╚████╔╝  "
+	@echo " ╚════██║██╔══██║██║   ██║██╔══██╗   ██║     ╚██╔╝   "
+	@echo " ███████║██║  ██║╚██████╔╝██║  ██║   ██║      ██║    "
+	@echo " ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝      ╚═╝    "
 
 # ===========================
 # Main commands
@@ -54,11 +54,11 @@ do-show-commands:
 
 do-show-container-info:
 	@echo "\n=== Local dev environment is running ===\n"
-	@echo "http://www.url-shortener.local     URL shortener app."
+	@echo "http://www.shorty.local     Shorty app."
 
 # Project recipes
 do-install-dependencies:
-	@echo "\n=== Installing dependencies for URL shortener ===\n"
+	@echo "\n=== Installing dependencies for Shorty ===\n"
 	docker compose exec app pnpm install
 
 # Docker container recipes
@@ -89,7 +89,7 @@ do-start-proxy:
 
 do-connect-proxy:
 	@echo "\n=== Connecting to hosts proxy ===\n"
-	@docker network connect url-shortener local-dev-proxy || true
+	@docker network connect shorty local-dev-proxy || true
 	@echo "Connected the local-dev-proxy to the composer network."
 
 do-stop-proxy:
@@ -99,13 +99,13 @@ do-stop-proxy:
 
 do-disconnect-proxy:
 	@echo "\n=== Disconnecting from hosts proxy ===\n"
-	@docker network disconnect url-shortener local-dev-proxy || true
+	@docker network disconnect shorty local-dev-proxy || true
 	@echo "Disconnected the local-dev-proxy to the composer network."
 
 do-setup-hosts-file:
-	@echo "\n=== Adding local URL shortener hosts ===\n"
-	@(cat /etc/hosts | grep -q url-shortener.local \
-		&& echo 'No changes: url-shortener.local already available in the hosts file.') \
+	@echo "\n=== Adding local Shorty hosts ===\n"
+	@(cat /etc/hosts | grep -q shorty.local \
+		&& echo 'No changes: shorty.local already available in the hosts file.') \
 	|| (docker run --rm \
 		-v /etc/hosts:/etc/hosts \
 		-v $$(pwd)/dev/hostnames.txt:/dev/hostnames.txt \
