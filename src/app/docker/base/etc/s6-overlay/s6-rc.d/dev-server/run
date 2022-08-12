@@ -1,2 +1,0 @@
-#!/command/with-contenv sh
-exec pnpm --dir /var/www dev

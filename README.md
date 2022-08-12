@@ -43,7 +43,7 @@ deploy NextJs apps.
 
 You can also dockerize this stack and deploy a container.
 
-1. In your [next.config.mjs](./next.config.mjs), add the `output: "standalone"` option to your config.
+1. In your [next.config.mjs](next.config.mjs), add the `output: "standalone"` option to your config.
 2. Create a `.dockerignore` file with the following contents:
    <details>
    <summary>.dockerignore</summary>
@@ -85,7 +85,7 @@ You can also dockerize this stack and deploy a container.
    FROM node:16-alpine AS builder
    WORKDIR /app
    COPY --from=deps /app/node_modules ./node_modules
-   COPY . .
+   COPY app .
 
    # Next.js collects completely anonymous telemetry data about general usage.
    # Learn more here: https://nextjs.org/telemetry
@@ -110,8 +110,8 @@ You can also dockerize this stack and deploy a container.
 
    # You only need to copy next.config.js if you are NOT using the default configuration
    # COPY --from=builder /app/next.config.js ./
-   COPY --from=builder /app/public ./public
-   COPY --from=builder /app/package.json ./package.json
+   COPY --from=builder /public ./public
+   COPY --from=builder /package.json ./package.json
 
    # Automatically leverage output traces to reduce image size
    # https://nextjs.org/docs/advanced-features/output-file-tracing
