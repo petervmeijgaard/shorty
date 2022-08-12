@@ -4,15 +4,16 @@ import type { AppRouter } from '../server/router';
 import type { AppType } from 'next/dist/shared/lib/utils';
 import superjson from 'superjson';
 import '../styles/globals.css';
+import Layout from '../components/Layout';
 
-const MyApp: AppType = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />;
-};
+const MyApp: AppType = ({ Component, pageProps }) => (
+  <Layout>
+    <Component {...pageProps} />
+  </Layout>
+);
 
 const getBaseUrl = () => {
-  if (typeof window !== 'undefined') {
-    return '';
-  }
+  if (typeof window !== 'undefined') return '';
   if (process.browser) return ''; // Browser should use current path
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // SSR should use vercel url
 
