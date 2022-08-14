@@ -29,24 +29,17 @@ const AddLink: NextPage = () => {
     setUrl('');
   };
 
-  const errors = shortenUrlMutation.error?.data?.zodError?.fieldErrors?.url || [];
-
-  const hasErrors = errors.length > 0;
-
   return (
     <>
       <Card className="lg:w-1/2">
-        {shortenUrlMutation.data && (
+        {shortenUrlMutation.isSuccess && (
           <SuccessNotification>
             Success! Your shortened URL has been copied to your clipboard
           </SuccessNotification>
         )}
-        {hasErrors && (
+        {shortenUrlMutation.isError && (
           <ErrorNotification>
-            Whoops! Something went wrong &nbsp;
-            {errors.map(errorMessage => (
-              <span key={errorMessage}>{errorMessage}</span>
-            ))}
+            Whoops! Something went wrong. Please make sure you have entered a valid URL.
           </ErrorNotification>
         )}
         <Form
