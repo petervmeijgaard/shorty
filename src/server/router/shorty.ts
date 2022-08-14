@@ -1,6 +1,6 @@
 import { createRouter } from './context';
 import { z } from 'zod';
-import { shortenUrl } from '../../utils/shorten-url';
+import { shortenUrl } from '../../utils/shortenUrl';
 
 export const shortyRouter = createRouter().mutation('shortenUrl', {
   input: z.string().url({ message: 'Invalid URL' }),

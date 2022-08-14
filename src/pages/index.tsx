@@ -11,7 +11,7 @@ import LoadingIcon from '../components/LoadingIcon';
 import Overlay from '../components/Overlay';
 import useDelayedLoading from '../hooks/useDelayedLoading';
 import FadeTransition from '../components/FadeTransition';
-import copyToClipboard from '../utils/copy-to-clipboard';
+import copyToClipboard from '../utils/copyToClipboard';
 
 const AddLink: NextPage = () => {
   const [url, setUrl] = useState('');
