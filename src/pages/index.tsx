@@ -10,6 +10,7 @@ import Form from '../components/Form';
 import LoadingIcon from '../components/LoadingIcon';
 import Overlay from '../components/Overlay';
 import useDelayedLoading from '../hooks/useDelayedLoading';
+import FadeTransition from '../components/FadeTransition';
 
 const AddLink: NextPage = () => {
   const [url, setUrl] = useState('');
@@ -61,11 +62,14 @@ const AddLink: NextPage = () => {
           </Button>
         </Form>
       </Card>
-      {isDelayedLoading && (
+      <FadeTransition
+        duration={500}
+        isVisible={isDelayedLoading}
+      >
         <Overlay>
           <LoadingIcon className="text-7xl text-slate-50" />
         </Overlay>
-      )}
+      </FadeTransition>
     </>
   );
 };
