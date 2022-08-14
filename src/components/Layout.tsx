@@ -9,7 +9,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => (
       <link rel="icon" href="/public/favicon.ico"/>
     </Head>
     <div className="flex min-w-full min-h-screen bg-slate-900 gap-4 items-center justify-center">
-      <div className="flex flex-1 container justify-center">
+      <div className="flex flex-1 container justify-center p-4">
         {children}
       </div>
     </div>

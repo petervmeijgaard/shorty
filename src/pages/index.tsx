@@ -25,7 +25,7 @@ const AddLink: NextPage = () => {
   const hasErrors = errors.length > 0;
 
   return (
-    <Card className="w-1/2">
+    <Card className="lg:w-1/2">
       {shortenUrlMutation.data && (
         <SuccessNotification>
           Your shortened URL: {shortenUrlMutation.data}
@@ -39,7 +39,10 @@ const AddLink: NextPage = () => {
           ))}
         </ErrorNotification>
       )}
-      <Form onSubmit={onSubmit}>
+      <Form
+        className="sm:flex-row"
+        onSubmit={onSubmit}
+      >
         <TextInput
           type="url"
           required

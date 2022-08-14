@@ -8,7 +8,7 @@ export const NotFound: NextPage = () => (
     <Head>
       <title>500 - Internal server error</title>
     </Head>
-    <Card className="w-1/2">
+    <Card className="lg:w-1/2">
       <ErrorNotification className="flex-col">
         <div className="flex flex-1 font-bold">
           Whoops! Something went wrong

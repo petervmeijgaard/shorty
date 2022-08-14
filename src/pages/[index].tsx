@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps<{}, Query> = async ({ params
 };
 
 export const GetAll: NextPage = () => (
-  <Card>
+  <Card className="lg:w-1/2">
     You should not see this...
   </Card>
 );
