@@ -28,7 +28,7 @@ const AddLink: NextPage = () => {
       await copyToClipboard(shortUrl);
 
       setUrl('');
-    } catch (e){
+    } catch (e) {
       //
     }
   };
