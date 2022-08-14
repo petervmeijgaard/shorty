@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { trpc } from '../utils/trpc';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import Card from '../components/Card';
 import ErrorNotification from '../components/ErrorNotification';
 import SuccessNotification from '../components/SuccessNotification';
@@ -11,6 +11,7 @@ import LoadingIcon from '../components/LoadingIcon';
 import Overlay from '../components/Overlay';
 import useDelayedLoading from '../hooks/useDelayedLoading';
 import FadeTransition from '../components/FadeTransition';
+import copyToClipboard from '../utils/copy-to-clipboard';
 
 const AddLink: NextPage = () => {
   const [url, setUrl] = useState('');
@@ -30,12 +31,18 @@ const AddLink: NextPage = () => {
 
   const hasErrors = errors.length > 0;
 
+  useEffect(() => {
+    if (!shortenUrlMutation.data) return;
+
+    void copyToClipboard(shortenUrlMutation.data);
+  }, [shortenUrlMutation.data]);
+
   return (
     <>
       <Card className="lg:w-1/2">
         {shortenUrlMutation.data && (
           <SuccessNotification>
-            Your shortened URL: {shortenUrlMutation.data}
+            Success! Your shortened URL has been copied to your clipboard
           </SuccessNotification>
         )}
         {hasErrors && (
