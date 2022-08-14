@@ -15,7 +15,7 @@ import copyToClipboard from '../utils/copyToClipboard';
 
 const AddLink: NextPage = () => {
   const [url, setUrl] = useState('');
-  const shortenUrlMutation = trpc.useMutation(['shorty.shortenUrl']);
+  const shortenUrlMutation = trpc.useMutation('shorty.shortenUrl');
 
   const isDelayedLoading = useDelayedLoading(shortenUrlMutation.isLoading);
 
