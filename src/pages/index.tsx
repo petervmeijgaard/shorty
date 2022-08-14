@@ -22,11 +22,15 @@ const AddLink: NextPage = () => {
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    const shortUrl = await shortenUrlMutation.mutateAsync(url);
+    try {
+      const shortUrl = await shortenUrlMutation.mutateAsync(url);
 
-    await copyToClipboard(shortUrl);
+      await copyToClipboard(shortUrl);
 
-    setUrl('');
+      setUrl('');
+    } catch (e){
+      //
+    }
   };
 
   return (
