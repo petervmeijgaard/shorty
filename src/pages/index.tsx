@@ -9,10 +9,13 @@ import TextInput from '../components/TextInput';
 import Form from '../components/Form';
 import LoadingIcon from '../components/LoadingIcon';
 import Overlay from '../components/Overlay';
+import useDelayedLoading from '../hooks/useDelayedLoading';
 
 const AddLink: NextPage = () => {
   const [url, setUrl] = useState('');
   const shortenUrlMutation = trpc.useMutation(['shorty.shortenUrl']);
+
+  const isDelayedLoading = useDelayedLoading(shortenUrlMutation.isLoading);
 
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -58,7 +61,7 @@ const AddLink: NextPage = () => {
           </Button>
         </Form>
       </Card>
-      {shortenUrlMutation.isLoading && (
+      {isDelayedLoading && (
         <Overlay>
           <LoadingIcon className="text-7xl text-slate-50" />
         </Overlay>
