@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { trpc } from '../utils/trpc';
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import Card from '../components/Card';
 import ErrorNotification from '../components/ErrorNotification';
 import SuccessNotification from '../components/SuccessNotification';
@@ -22,7 +22,9 @@ const AddLink: NextPage = () => {
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    await shortenUrlMutation.mutate(url);
+    const shortUrl = await shortenUrlMutation.mutateAsync(url);
+
+    await copyToClipboard(shortUrl);
 
     setUrl('');
   };
@@ -30,12 +32,6 @@ const AddLink: NextPage = () => {
   const errors = shortenUrlMutation.error?.data?.zodError?.fieldErrors?.url || [];
 
   const hasErrors = errors.length > 0;
-
-  useEffect(() => {
-    if (!shortenUrlMutation.data) return;
-
-    void copyToClipboard(shortenUrlMutation.data);
-  }, [shortenUrlMutation.data]);
 
   return (
     <>
