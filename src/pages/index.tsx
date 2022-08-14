@@ -62,10 +62,7 @@ const AddLink: NextPage = () => {
           </Button>
         </Form>
       </Card>
-      <FadeTransition
-        duration={500}
-        isVisible={isDelayedLoading}
-      >
+      <FadeTransition isVisible={isDelayedLoading}>
         <Overlay>
           <LoadingIcon className="text-7xl text-slate-50" />
         </Overlay>
