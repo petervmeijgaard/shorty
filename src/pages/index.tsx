@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { trpc } from '../utils/trpc';
+import { useMutation } from '../utils/trpc';
 import { FormEvent, useState } from 'react';
 import Card from '../components/Card';
 import ErrorNotification from '../components/ErrorNotification';
@@ -15,7 +15,7 @@ import copyToClipboard from '../utils/copyToClipboard';
 
 const AddLink: NextPage = () => {
   const [url, setUrl] = useState('');
-  const shortenUrlMutation = trpc.useMutation('shorty.shortenUrl');
+  const shortenUrlMutation = useMutation('shorty.shortenUrl');
 
   const isDelayedLoading = useDelayedLoading(shortenUrlMutation.isLoading);
 

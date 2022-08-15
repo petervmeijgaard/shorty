@@ -2,7 +2,7 @@ import type { AppRouter } from '../server/router';
 import { createReactQueryHooks } from '@trpc/react';
 import type { inferProcedureInput, inferProcedureOutput } from '@trpc/server';
 
-export const trpc = createReactQueryHooks<AppRouter>();
+export const { useMutation, useQuery } = createReactQueryHooks<AppRouter>();
 
 /**
  * This is a helper method to infer the output of a query resolver
