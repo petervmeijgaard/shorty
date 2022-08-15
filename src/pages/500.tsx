@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Card from '../components/Card';
 import ErrorNotification from '../components/ErrorNotification';
 
-export const NotFound: NextPage = () => (
+export const InternalServerError: NextPage = () => (
   <>
     <Head>
       <title>500 - Internal server error</title>
@@ -21,4 +21,4 @@ export const NotFound: NextPage = () => (
   </>
 );
 
-export default NotFound;
+export default InternalServerError;
