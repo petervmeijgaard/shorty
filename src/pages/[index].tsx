@@ -7,18 +7,18 @@ type Query = {
 }
 
 export const getServerSideProps: GetServerSideProps<{}, Query> = async ({ params }) => {
-  try {
-    const { url } = await prisma.url.findFirstOrThrow({ where: { shortUrl: params?.index } });
+  const result = await prisma.url.findFirst({ where: { shortUrl: params?.index } });
 
-    return {
-      redirect: {
-        permanent: false,
-        destination: url,
-      },
-    };
-  } catch (e) {
+  if (!result) {
     return { notFound: true };
   }
+
+  return {
+    redirect: {
+      permanent: false,
+      destination: result.url,
+    },
+  };
 };
 
 export const GetAll: NextPage = () => (
