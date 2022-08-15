@@ -1,4 +1,4 @@
-import { useTransition, animated } from '@react-spring/web';
+import { animated, useTransition } from '@react-spring/web';
 import { FC, HTMLAttributes } from 'react';
 
 type Props = HTMLAttributes<HTMLDivElement> & {
