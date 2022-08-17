@@ -1,7 +1,7 @@
-import { useTimeout } from './useTimeout';
 import { useCallback, useEffect, useState } from 'react';
+import { useTimeout } from './useTimeout';
 
-export const useDelayedLoading = (isLoading: boolean, delay: number = 500): boolean => {
+export const useDelayedLoading = (isLoading: boolean, delay = 500): boolean => {
   const [derivedIsLoading, setDerivedIsLoading] = useState(false);
   const timeout = useTimeout();
 

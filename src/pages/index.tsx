@@ -1,36 +1,31 @@
 import { NextPage } from 'next';
-import { useMutation } from '../utils/trpc';
 import { FormEvent, useState } from 'react';
+import Button from '../components/Button';
 import Card from '../components/Card';
 import ErrorNotification from '../components/ErrorNotification';
-import SuccessNotification from '../components/SuccessNotification';
-import Button from '../components/Button';
-import TextInput from '../components/TextInput';
+import FadeTransition from '../components/FadeTransition';
 import Form from '../components/Form';
 import LoadingIcon from '../components/LoadingIcon';
 import Overlay from '../components/Overlay';
-import useDelayedLoading from '../hooks/useDelayedLoading';
-import FadeTransition from '../components/FadeTransition';
-import copyToClipboard from '../utils/copyToClipboard';
+import SuccessNotification from '../components/SuccessNotification';
+import TextInput from '../components/TextInput';
+import { useDelayedLoading } from '../hooks/useDelayedLoading';
+import { copyToClipboard } from '../utils/copyToClipboard';
+import { useMutation } from '../utils/trpc';
 
 const AddLink: NextPage = () => {
   const [url, setUrl] = useState('');
-  const shortenUrlMutation = useMutation('shorty.shortenUrl');
+  const shortenUrlMutation = useMutation('shorty.shortenUrl', {
+    onSuccess: copyToClipboard,
+    onSettled: () => setUrl(''),
+  });
 
   const isDelayedLoading = useDelayedLoading(shortenUrlMutation.isLoading);
 
-  const onSubmit = async (event: FormEvent) => {
+  const onSubmit = (event: FormEvent) => {
     event.preventDefault();
 
-    try {
-      const shortUrl = await shortenUrlMutation.mutateAsync(url);
-
-      await copyToClipboard(shortUrl);
-
-      setUrl('');
-    } catch (e) {
-      //
-    }
+    shortenUrlMutation.mutate(url);
   };
 
   return (
@@ -43,13 +38,11 @@ const AddLink: NextPage = () => {
         )}
         {shortenUrlMutation.isError && (
           <ErrorNotification>
-            Whoops! Something went wrong. Please make sure you have entered a valid URL.
+            Whoops! Something went wrong. Please make sure you have entered a
+            valid URL.
           </ErrorNotification>
         )}
-        <Form
-          className="sm:flex-row"
-          onSubmit={onSubmit}
-        >
+        <Form className="sm:flex-row" onSubmit={onSubmit}>
           <TextInput
             type="url"
             required
@@ -57,9 +50,7 @@ const AddLink: NextPage = () => {
             value={url}
             onInput={event => setUrl(event.currentTarget.value)}
           />
-          <Button disabled={shortenUrlMutation.isLoading}>
-            Shorten URL
-          </Button>
+          <Button disabled={shortenUrlMutation.isLoading}>Shorten URL</Button>
         </Form>
       </Card>
       <FadeTransition isVisible={isDelayedLoading}>

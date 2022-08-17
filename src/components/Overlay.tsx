@@ -1,9 +1,15 @@
 import cn from 'classnames';
 import { FC, HTMLAttributes } from 'react';
 
-export const Overlay: FC<HTMLAttributes<HTMLDivElement>> = ({ className, ...props }) => (
+const Overlay: FC<HTMLAttributes<HTMLDivElement>> = ({
+  className,
+  ...props
+}) => (
   <div
-    className={cn('flex flex-1 inset-0 justify-center items-center fixed bg-slate-900/75 backdrop-blur-md', className)}
+    className={cn(
+      'flex flex-1 inset-0 justify-center items-center fixed bg-slate-900/75 backdrop-blur-md',
+      className,
+    )}
     {...props}
   />
 );

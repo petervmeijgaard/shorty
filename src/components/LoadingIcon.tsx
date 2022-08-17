@@ -1,18 +1,8 @@
 import { FC, SVGAttributes } from 'react';
 
-export const LoadingIcon: FC<SVGAttributes<SVGElement>> = props => (
-  <svg
-    width="1em"
-    height="1em"
-    viewBox="0 0 24 24"
-    {...props}
-  >
-    <circle
-      cx="18"
-      cy="12"
-      r="0"
-      fill="currentColor"
-    >
+const LoadingIcon: FC<SVGAttributes<SVGElement>> = props => (
+  <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+    <circle cx="18" cy="12" r="0" fill="currentColor">
       <animate
         attributeName="r"
         begin=".67"
@@ -21,14 +11,9 @@ export const LoadingIcon: FC<SVGAttributes<SVGElement>> = props => (
         keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
         repeatCount="indefinite"
         values="0;2;0;0"
-      ></animate>
+      />
     </circle>
-    <circle
-      cx="12"
-      cy="12"
-      r="0"
-      fill="currentColor"
-    >
+    <circle cx="12" cy="12" r="0" fill="currentColor">
       <animate
         attributeName="r"
         begin=".33"
@@ -37,14 +22,9 @@ export const LoadingIcon: FC<SVGAttributes<SVGElement>> = props => (
         keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
         repeatCount="indefinite"
         values="0;2;0;0"
-      ></animate>
+      />
     </circle>
-    <circle
-      cx="6"
-      cy="12"
-      r="0"
-      fill="currentColor"
-    >
+    <circle cx="6" cy="12" r="0" fill="currentColor">
       <animate
         attributeName="r"
         begin="0"
@@ -53,7 +33,7 @@ export const LoadingIcon: FC<SVGAttributes<SVGElement>> = props => (
         keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
         repeatCount="indefinite"
         values="0;2;0;0"
-      ></animate>
+      />
     </circle>
   </svg>
 );

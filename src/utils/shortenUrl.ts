@@ -1,6 +1,6 @@
-import md5 from 'md5';
-import baseX from 'base-x';
 import { Buffer } from 'buffer';
+import baseX from 'base-x';
+import md5 from 'md5';
 
 const BASE62 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -9,3 +9,5 @@ export const shortenUrl = (url: string) => {
 
   return baseX(BASE62).encode(Buffer.from(md5String));
 };
+
+export default shortenUrl;

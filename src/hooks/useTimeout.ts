@@ -15,7 +15,7 @@ export const useTimeout = () => {
     timer.current = null;
   }, []);
 
-  useEffect(() => () => clear(), [clear]);
+  useEffect(() => clear, [clear]);
 
   return {
     start,

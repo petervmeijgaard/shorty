@@ -1,9 +1,9 @@
 import { withTRPC } from '@trpc/next';
-import type { AppRouter } from '../server/router';
 import type { AppType } from 'next/dist/shared/lib/utils';
 import superjson from 'superjson';
-import '../styles/globals.css';
 import Layout from '../components/Layout';
+import type { AppRouter } from '../server/router';
+import '../styles/globals.css';
 
 const MyApp: AppType = ({ Component, pageProps }) => (
   <Layout>
@@ -20,7 +20,7 @@ const getBaseUrl = () => {
 };
 
 export default withTRPC<AppRouter>({
-  config({ ctx }) {
+  config() {
     /**
      * If you want to use SSR, you need to use the server's full URL
      * @link https://trpc.io/docs/ssr

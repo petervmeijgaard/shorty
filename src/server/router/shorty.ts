@@ -1,6 +1,6 @@
-import { createRouter } from './context';
 import { z } from 'zod';
 import { shortenUrl } from '../../utils/shortenUrl';
+import { createRouter } from './context';
 
 export const shortyRouter = createRouter().mutation('shortenUrl', {
   input: z.string().url({ message: 'Invalid URL' }),
@@ -10,8 +10,8 @@ export const shortyRouter = createRouter().mutation('shortenUrl', {
 
     await ctx.prisma.url.create({ data: { url, shortUrl } });
 
-    return origin
-      ? `${origin}/${shortUrl}`
-      : shortUrl;
+    return origin ? `${origin}/${shortUrl}` : shortUrl;
   },
 });
+
+export default shortyRouter;
