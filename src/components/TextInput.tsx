@@ -1,17 +1,21 @@
 import cn from 'classnames';
-import { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 
-const TextInput = ({
-  className,
-  ...props
-}: InputHTMLAttributes<HTMLInputElement>) => (
+const TextInput = React.forwardRef<
+  HTMLInputElement,
+  InputHTMLAttributes<HTMLInputElement>
+>(({ className, ...props }, ref) => (
   <input
+    ref={ref}
     className={cn(
       'flex flex-1 w-full p-4 rounded border border-slate-900',
       className,
     )}
     {...props}
   />
-);
+));
+
+// eslint-disable-next-line functional/immutable-data
+TextInput.displayName = 'TextInput';
 
 export default TextInput;
