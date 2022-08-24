@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 import Button from '../components/Button';
 import Card from '../components/Card';
 import ErrorNotification from '../components/ErrorNotification';
@@ -15,28 +15,40 @@ import { useMutation } from '../utils/trpc';
 
 const AddLink: NextPage = () => {
   const [url, setUrl] = useState('');
-  const shortenUrlMutation = useMutation('shorty.shortenUrl', {
-    onSuccess: copyToClipboard,
-    onSettled: () => setUrl(''),
-  });
+  const inputRef = useRef<HTMLInputElement>(null);
+  const mutation = useMutation('shorty.shortenUrl');
 
-  const isDelayedLoading = useDelayedLoading(shortenUrlMutation.isLoading);
+  const isDelayedLoading = useDelayedLoading(mutation.isLoading);
+
+  const shortenUrl = async () => {
+    try {
+      const result = await mutation.mutateAsync(url);
+
+      await copyToClipboard(result);
+    } catch (error) {
+      // Do nothing right now...
+    } finally {
+      setUrl('');
+
+      inputRef.current?.focus();
+    }
+  };
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
 
-    shortenUrlMutation.mutate(url);
+    void shortenUrl();
   };
 
   return (
     <>
       <Card className="lg:w-1/2">
-        {shortenUrlMutation.isSuccess && (
+        {mutation.isSuccess && (
           <SuccessNotification>
             Success! Your shortened URL has been copied to your clipboard
           </SuccessNotification>
         )}
-        {shortenUrlMutation.isError && (
+        {mutation.isError && (
           <ErrorNotification>
             Whoops! Something went wrong. Please make sure you have entered a
             valid URL.
@@ -44,13 +56,14 @@ const AddLink: NextPage = () => {
         )}
         <Form className="sm:flex-row" onSubmit={onSubmit}>
           <TextInput
+            ref={inputRef}
             type="url"
             required
             placeholder="Enter URL to short"
             value={url}
             onInput={event => setUrl(event.currentTarget.value)}
           />
-          <Button disabled={shortenUrlMutation.isLoading}>Shorten URL</Button>
+          <Button disabled={mutation.isLoading}>Shorten URL</Button>
         </Form>
       </Card>
       <FadeTransition isVisible={isDelayedLoading}>
