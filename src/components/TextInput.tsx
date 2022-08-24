@@ -1,10 +1,10 @@
 import cn from 'classnames';
-import { FC, InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
 
-const TextInput: FC<InputHTMLAttributes<HTMLInputElement>> = ({
+const TextInput = ({
   className,
   ...props
-}) => (
+}: InputHTMLAttributes<HTMLInputElement>) => (
   <input
     className={cn(
       'flex flex-1 w-full p-4 rounded border border-slate-900',

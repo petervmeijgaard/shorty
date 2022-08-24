@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import { FC, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
-const Layout: FC<PropsWithChildren> = ({ children }) => (
+const Layout = ({ children }: PropsWithChildren) => (
   <>
     <Head>
       <title>Shorty - Shorten your URL</title>

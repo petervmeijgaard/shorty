@@ -1,10 +1,7 @@
 import cn from 'classnames';
-import { FC, FormHTMLAttributes } from 'react';
+import { FormHTMLAttributes } from 'react';
 
-const Form: FC<FormHTMLAttributes<HTMLFormElement>> = ({
-  className,
-  ...props
-}) => (
+const Form = ({ className, ...props }: FormHTMLAttributes<HTMLFormElement>) => (
   <form
     className={cn('flex flex-1 flex-col items-start gap-4', className)}
     {...props}

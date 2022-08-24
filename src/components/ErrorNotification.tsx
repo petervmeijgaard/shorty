@@ -1,10 +1,12 @@
 import cn from 'classnames';
-import { FC, HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import BaseNotification from './BaseNotification';
 
-const ErrorNotification: FC<HTMLAttributes<HTMLDivElement>> = ({
+const ErrorNotification = ({
   className,
   ...props
-}) => <BaseNotification className={cn('bg-red-900', className)} {...props} />;
+}: HTMLAttributes<HTMLDivElement>) => (
+  <BaseNotification className={cn('bg-red-900', className)} {...props} />
+);
 
 export default ErrorNotification;

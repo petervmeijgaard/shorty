@@ -1,7 +1,7 @@
 import cn from 'classnames';
-import { FC, HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 
-const Card: FC<HTMLAttributes<HTMLDivElement>> = ({ className, ...props }) => (
+const Card = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
       'flex flex-col w-full p-8 gap-4 rounded border bg-slate-50',
