@@ -8,7 +8,13 @@ export const shortyRouter = createRouter().mutation('shortenUrl', {
     const shortUrl = shortenUrl(url);
     const { origin } = ctx.req?.headers ?? {};
 
-    await ctx.prisma.url.create({ data: { url, shortUrl } });
+    const data = { url, shortUrl };
+
+    await ctx.prisma.url.upsert({
+      where: { shortUrl },
+      create: data,
+      update: data,
+    });
 
     return origin ? `${origin}/${shortUrl}` : shortUrl;
   },
