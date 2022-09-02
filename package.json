@@ -9,7 +9,6 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
-    "prebuild": "test \"$CI\" = true && npx pnpm@7.9.0 install -r --store=node_modules/.pnpm-store || echo skiping pnpm install",
     "vercel-build": "prisma migrate deploy && next build"
   },
   "dependencies": {

@@ -1,6 +1,10 @@
 [build]
-  command = "prisma migrate deploy && next build"
+  command = """
+  npx pnpm@7.9.1 install -r --store=node_modules/.pnpm-store && \
+  prisma migrate deploy && \
+  next build
+  """
 
 [build.environment]
   NODE_VERSION = "16"
-  NPM_FLAGS = "--prefix=/dev/null"
+  NPM_FLAGS = "--version"
