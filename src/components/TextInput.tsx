@@ -1,9 +1,9 @@
 import cn from 'classnames';
-import React, { InputHTMLAttributes } from 'react';
+import { forwardRef, ComponentPropsWithoutRef } from 'react';
 
-const TextInput = React.forwardRef<
+const TextInput = forwardRef<
   HTMLInputElement,
-  InputHTMLAttributes<HTMLInputElement>
+  ComponentPropsWithoutRef<'input'>
 >(({ className, ...props }, ref) => (
   <input
     ref={ref}

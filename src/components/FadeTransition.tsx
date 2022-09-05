@@ -1,7 +1,7 @@
 import { animated, useTransition } from '@react-spring/web';
-import { HTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
-type Props = HTMLAttributes<HTMLDivElement> & {
+type Props = ComponentPropsWithoutRef<'div'> & {
   readonly isVisible: boolean;
   readonly duration?: number;
 };

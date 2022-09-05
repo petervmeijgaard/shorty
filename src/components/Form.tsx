@@ -1,7 +1,7 @@
 import cn from 'classnames';
-import { FormHTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
-const Form = ({ className, ...props }: FormHTMLAttributes<HTMLFormElement>) => (
+const Form = ({ className, ...props }: ComponentPropsWithoutRef<'form'>) => (
   <form
     className={cn('flex flex-1 flex-col items-start gap-4', className)}
     {...props}

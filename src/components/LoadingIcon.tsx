@@ -1,6 +1,6 @@
-import { SVGAttributes } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
-const LoadingIcon = (props: SVGAttributes<SVGElement>) => (
+const LoadingIcon = (props: ComponentPropsWithoutRef<'svg'>) => (
   <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
     <circle cx="18" cy="12" r="0" fill="currentColor">
       <animate

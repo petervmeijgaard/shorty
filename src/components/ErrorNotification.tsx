@@ -1,11 +1,11 @@
 import cn from 'classnames';
-import { HTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import BaseNotification from './BaseNotification';
 
 const ErrorNotification = ({
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) => (
+}: ComponentPropsWithoutRef<typeof BaseNotification>) => (
   <BaseNotification className={cn('bg-red-900', className)} {...props} />
 );
 
