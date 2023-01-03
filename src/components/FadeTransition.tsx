@@ -1,17 +1,17 @@
 import { animated, useTransition } from '@react-spring/web';
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, FC } from 'react';
 
 type Props = ComponentPropsWithoutRef<'div'> & {
   readonly isVisible: boolean;
   readonly duration?: number;
 };
 
-const FadeTransition = ({
+const FadeTransition: FC<Props> = ({
   duration = 500,
   isVisible,
   style,
   ...props
-}: Props) => {
+}) => {
   const transitions = useTransition(isVisible, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
