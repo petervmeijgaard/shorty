@@ -36,64 +36,33 @@
   ],
   "rules": {
     "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/consistent-type-definitions": [
-      "error",
-      "type"
-    ],
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/naming-convention": [
       "error",
       {
         "selector": "typeLike",
-        "format": [
-          "PascalCase"
-        ]
+        "format": ["PascalCase"]
       },
       {
         "selector": "enumMember",
-        "format": [
-          "PascalCase",
-          "UPPER_CASE"
-        ]
+        "format": ["PascalCase", "UPPER_CASE"]
       },
       {
         "selector": "variable",
-        "types": [
-          "boolean"
-        ],
-        "prefix": [
-          "is",
-          "should",
-          "has",
-          "can",
-          "did",
-          "will",
-          "derivedIs"
-        ],
-        "format": [
-          "PascalCase"
-        ]
+        "types": ["boolean"],
+        "prefix": ["is", "should", "has", "can", "did", "will", "derivedIs"],
+        "format": ["PascalCase"]
       }
     ],
-    "@typescript-eslint/no-shadow": [
-      "error"
-    ],
-    "@typescript-eslint/no-unused-vars": [
-      "error"
-    ],
+    "@typescript-eslint/no-shadow": ["error"],
+    "@typescript-eslint/no-unused-vars": ["error"],
     "@typescript-eslint/prefer-readonly-parameter-types": "off",
-    "arrow-body-style": [
-      "error",
-      "as-needed"
-    ],
+    "arrow-body-style": ["error", "as-needed"],
     "functional/immutable-data": [
       "error",
       {
-        "ignorePattern": [
-          "value",
-          "current",
-          "exports"
-        ]
+        "ignorePattern": ["value", "current", "exports"]
       }
     ],
     "functional/no-mixed-type": "off",
@@ -138,9 +107,7 @@
     "no-restricted-exports": [
       "error",
       {
-        "restrictedNamedExports": [
-          "then"
-        ]
+        "restrictedNamedExports": ["then"]
       }
     ],
     "no-shadow": "off",
@@ -148,19 +115,11 @@
     "prettier/prettier": "error",
     "react/button-has-type": "off",
     "react/function-component-definition": "off",
-    "react/jsx-boolean-value": [
-      "error",
-      "never"
-    ],
+    "react/jsx-boolean-value": ["error", "never"],
     "react/jsx-filename-extension": [
       2,
       {
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx"
-        ]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     ],
     "react/jsx-props-no-spreading": "off"
