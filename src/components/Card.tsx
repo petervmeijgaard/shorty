@@ -1,7 +1,7 @@
 import cn from 'classnames';
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, FC } from 'react';
 
-const Card = ({ className, ...props }: ComponentPropsWithoutRef<'div'>) => (
+const Card: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...props }) => (
   <div
     className={cn(
       'flex flex-col w-full p-8 gap-4 rounded border bg-slate-50',

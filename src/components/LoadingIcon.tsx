@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, FC } from 'react';
 
-const LoadingIcon = (props: ComponentPropsWithoutRef<'svg'>) => (
+const LoadingIcon: FC<ComponentPropsWithoutRef<'svg'>> = props => (
   <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
     <circle cx="18" cy="12" r="0" fill="currentColor">
       <animate
