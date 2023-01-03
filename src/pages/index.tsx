@@ -10,13 +10,13 @@ import Overlay from '../components/Overlay';
 import SuccessNotification from '../components/SuccessNotification';
 import TextInput from '../components/TextInput';
 import { useDelayedLoading } from '../hooks/useDelayedLoading';
+import { api } from '../utils/api';
 import { copyToClipboard } from '../utils/copyToClipboard';
-import { useMutation } from '../utils/trpc';
 
 const AddLink: NextPage = () => {
   const [url, setUrl] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
-  const mutation = useMutation('shorty.shortenUrl');
+  const mutation = api.shorty.shortenUrl.useMutation();
 
   const isDelayedLoading = useDelayedLoading(mutation.isLoading);
 
