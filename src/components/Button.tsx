@@ -7,7 +7,7 @@ const Button: FC<ComponentPropsWithoutRef<'button'>> = ({
 }) => (
   <button
     className={cn(
-      'flex p-4 h-full items-center rounded bg-slate-900 hover:bg-slate-800 transition-colors text-slate-50 disabled:hover:bg-slate-900 disabled:opacity-50 disabled:cursor-not-allowed',
+      'flex p-4 h-full items-center rounded bg-neutral-900 hover:bg-neutral-800 transition-colors text-neutral-50 disabled:hover:bg-neutral-900 disabled:opacity-50 disabled:cursor-not-allowed',
       className,
     )}
     {...props}

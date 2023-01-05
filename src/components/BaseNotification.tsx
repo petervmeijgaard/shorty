@@ -6,7 +6,7 @@ const BaseNotification: FC<ComponentPropsWithoutRef<'div'>> = ({
   ...props
 }) => (
   <div
-    className={cn('flex flex-1 p-4 rounded text-slate-50', className)}
+    className={cn('flex flex-1 p-4 rounded text-neutral-50', className)}
     {...props}
   />
 );

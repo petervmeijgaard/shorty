@@ -7,7 +7,7 @@ const Overlay: FC<ComponentPropsWithoutRef<'div'>> = ({
 }) => (
   <div
     className={cn(
-      'flex flex-1 inset-0 justify-center items-center fixed bg-slate-900/75 backdrop-blur-md',
+      'flex flex-1 inset-0 justify-center items-center fixed bg-neutral-900/75 backdrop-blur-md',
       className,
     )}
     {...props}
