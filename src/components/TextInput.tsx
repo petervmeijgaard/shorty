@@ -8,7 +8,7 @@ const TextInput = forwardRef<
   <input
     ref={ref}
     className={cn(
-      'flex flex-1 w-full p-4 rounded border border-slate-900',
+      'flex flex-1 w-full p-4 rounded border border-neutral-900',
       className,
     )}
     {...props}

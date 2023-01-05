@@ -11,7 +11,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => (
       />
       <link rel="icon" href="/public/favicon.ico" />
     </Head>
-    <div className="flex min-h-screen min-w-full items-center justify-center gap-4 bg-slate-900">
+    <div className="flex min-h-screen min-w-full items-center justify-center gap-4 bg-neutral-900">
       <div className="container flex flex-1 justify-center p-4">{children}</div>
     </div>
   </>
