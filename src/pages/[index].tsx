@@ -21,6 +21,12 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async ({
     return { notFound: true };
   }
 
+  await prisma.urlHit.create({
+    data: {
+      urlId: result.id,
+    },
+  });
+
   return {
     redirect: {
       permanent: false,
