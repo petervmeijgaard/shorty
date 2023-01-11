@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { shortenUrl } from '../../../utils/shortenUrl';
+import { shortenUrl } from '@/utils/shortenUrl';
 import { createTRPCRouter, publicProcedure } from '../trpc';
 
 export const shortyRouter = createTRPCRouter({
