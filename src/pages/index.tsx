@@ -45,35 +45,37 @@ const AddLink: NextPage = () => {
       <Head>
         <title>Shorty - Shorten your URL</title>
       </Head>
-      <Card className="flex-col lg:w-1/2">
-        {mutation.isSuccess && (
-          <Notification.Success>
-            Success! Your shortened URL has been copied to your clipboard
-          </Notification.Success>
-        )}
-        {mutation.isError && (
-          <Notification.Error>
-            Whoops! Something went wrong. Please make sure you have entered a
-            valid URL.
-          </Notification.Error>
-        )}
-        <Form className="sm:flex-row" onSubmit={onSubmit}>
-          <TextInput
-            ref={inputRef}
-            type="url"
-            required
-            placeholder="Enter URL to short"
-            value={url}
-            onInput={event => setUrl(event.currentTarget.value)}
-          />
-          <Button disabled={mutation.isLoading}>Shorten URL</Button>
-        </Form>
-      </Card>
-      <FadeTransition isVisible={isDelayedLoading}>
-        <Overlay>
-          <LoadingIcon className="text-7xl text-slate-50" />
-        </Overlay>
-      </FadeTransition>
+      <div className="flex flex-1 items-center justify-center">
+        <Card className="flex-col lg:w-1/2">
+          {mutation.isSuccess && (
+            <Notification.Success>
+              Success! Your shortened URL has been copied to your clipboard
+            </Notification.Success>
+          )}
+          {mutation.isError && (
+            <Notification.Error>
+              Whoops! Something went wrong. Please make sure you have entered a
+              valid URL.
+            </Notification.Error>
+          )}
+          <Form className="sm:flex-row" onSubmit={onSubmit}>
+            <TextInput
+              ref={inputRef}
+              type="url"
+              required
+              placeholder="Enter URL to short"
+              value={url}
+              onInput={event => setUrl(event.currentTarget.value)}
+            />
+            <Button disabled={mutation.isLoading}>Shorten URL</Button>
+          </Form>
+        </Card>
+        <FadeTransition isVisible={isDelayedLoading}>
+          <Overlay>
+            <LoadingIcon className="text-7xl text-slate-50" />
+          </Overlay>
+        </FadeTransition>
+      </div>
     </>
   );
 };

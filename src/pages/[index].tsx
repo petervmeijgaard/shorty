@@ -36,7 +36,9 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async ({
 };
 
 export const GetAll: NextPage = () => (
-  <Card className="lg:w-1/2">You should not see this...</Card>
+  <div className="flex flex-1 items-center justify-center">
+    <Card className="lg:w-1/2">You should not see this...</Card>
+  </div>
 );
 
 export default GetAll;
