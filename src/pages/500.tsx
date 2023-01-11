@@ -6,7 +6,7 @@ import Notification from '@/components/ui/Notification';
 export const InternalServerError: NextPage = () => (
   <>
     <Head>
-      <title>500 - Internal server error</title>
+      <title>Shorty - 500 - Internal server error</title>
     </Head>
     <div className="flex flex-1 items-center justify-center">
       <Card className="lg:w-1/2">
