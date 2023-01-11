@@ -9,7 +9,6 @@ const BaseLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Head>
-        <title>Shorty - Shorten your URL</title>
         <meta
           name="description"
           content="A small and easy to use URL shortener"
