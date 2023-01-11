@@ -53,6 +53,18 @@ export const shortyRouter = createTRPCRouter({
       hits: url._count.hits,
     }));
   }),
+
+  deleteAccount: protectedProcedure.mutation(
+    async ({ ctx: { session, prisma } }) => {
+      await prisma.user.delete({
+        where: {
+          id: session.user.id,
+        },
+      });
+
+      return null;
+    },
+  ),
 });
 
 export default shortyRouter;
