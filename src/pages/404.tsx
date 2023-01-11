@@ -6,7 +6,7 @@ import Notification from '@/components/ui/Notification';
 export const NotFound: NextPage = () => (
   <>
     <Head>
-      <title>404 - Not Found</title>
+      <title>Shorty - 404 - Not Found</title>
     </Head>
     <div className="flex flex-1 items-center justify-center">
       <Card className="lg:w-1/2">
