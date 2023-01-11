@@ -41,7 +41,7 @@ const AddLink: NextPage = () => {
 
   return (
     <>
-      <Card className="lg:w-1/2">
+      <Card className="flex-col lg:w-1/2">
         {mutation.isSuccess && (
           <Notification.Success>
             Success! Your shortened URL has been copied to your clipboard
