@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@iconify-json/eos-icons": "^1.1.5",
+    "@iconify-json/ri": "^1.1.4",
     "@svgr/core": "6.5.1",
     "@types/md5": "^2.3.2",
     "@types/node": "^18.11.18",
