@@ -44,8 +44,8 @@ model User {
 model UrlUser {
   urlId  String @map("url_id")
   userId String @map("user_id")
-  url    Url    @relation(fields: [urlId], references: [id])
-  user   User   @relation(fields: [userId], references: [id])
+  url    Url    @relation(fields: [urlId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([urlId, userId])
   @@map("url_user")
