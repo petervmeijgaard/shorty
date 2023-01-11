@@ -1,21 +1,22 @@
 /* eslint-disable no-underscore-dangle */
 import { z } from 'zod';
 import { shortenUrl } from '@/utils/shortenUrl';
+import { insertShortUrl } from '../../db/insertShortUrl';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc';
 
 export const shortyRouter = createTRPCRouter({
   shortenUrl: publicProcedure
     .input(z.string().url({ message: 'Invalid URL' }))
-    .mutation(async ({ input: url, ctx }) => {
+    .mutation(async ({ input: url, ctx: { req, session } }) => {
+      const { user } = session || {};
+      const { origin } = req.headers;
+
       const shortUrl = shortenUrl(url);
-      const { origin } = ctx.req.headers;
 
-      const data = { url, shortUrl };
-
-      await ctx.prisma.url.upsert({
-        where: { shortUrl },
-        create: data,
-        update: data,
+      await insertShortUrl({
+        user,
+        url,
+        shortUrl,
       });
 
       return origin ? `${origin}/${shortUrl}` : shortUrl;
