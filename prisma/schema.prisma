@@ -15,8 +15,17 @@ model Url {
   url      String
   shortUrl String    @unique @map("short_url")
   users    UrlUser[]
+  hits     UrlHit[]
 
   @@map("urls")
+}
+
+model UrlHit {
+  id     String  @id @default(cuid())
+  urlId  String  @map("url_id")
+  url    Url     @relation(fields: [urlId], references: [id])
+
+  @@map("url_hits")
 }
 
 model User {
