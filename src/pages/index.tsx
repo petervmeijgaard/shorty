@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { FormEvent, useRef, useState } from 'react';
-import FadeTransition from '@/components/FadeTransition';
+import FadeTransition from '@/components/transitions/FadeTransition';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import ErrorNotification from '@/components/ui/ErrorNotification';
