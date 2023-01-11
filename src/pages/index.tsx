@@ -1,17 +1,17 @@
 import { NextPage } from 'next';
 import { FormEvent, useRef, useState } from 'react';
-import Button from '../components/Button';
-import Card from '../components/Card';
-import ErrorNotification from '../components/ErrorNotification';
-import FadeTransition from '../components/FadeTransition';
-import Form from '../components/Form';
-import LoadingIcon from '../components/LoadingIcon';
-import Overlay from '../components/Overlay';
-import SuccessNotification from '../components/SuccessNotification';
-import TextInput from '../components/TextInput';
-import { useDelayedLoading } from '../hooks/useDelayedLoading';
-import { api } from '../utils/api';
-import { copyToClipboard } from '../utils/copyToClipboard';
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+import ErrorNotification from '@/components/ErrorNotification';
+import FadeTransition from '@/components/FadeTransition';
+import Form from '@/components/Form';
+import LoadingIcon from '@/components/LoadingIcon';
+import Overlay from '@/components/Overlay';
+import SuccessNotification from '@/components/SuccessNotification';
+import TextInput from '@/components/TextInput';
+import { useDelayedLoading } from '@/hooks/useDelayedLoading';
+import { api } from '@/utils/api';
+import { copyToClipboard } from '@/utils/copyToClipboard';
 
 const AddLink: NextPage = () => {
   const [url, setUrl] = useState('');

@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next';
-import Card from '../components/Card';
-import { prisma } from '../server/db';
+import Card from '@/components/Card';
+import { prisma } from '@/server/db';
 
 type Query = {
   readonly index: string;
