@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import Card from '@/components/Card';
-import ErrorNotification from '@/components/ErrorNotification';
+import Card from '@/components/ui/Card';
+import ErrorNotification from '@/components/ui/ErrorNotification';
 
 export const InternalServerError: NextPage = () => (
   <>
