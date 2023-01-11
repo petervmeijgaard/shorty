@@ -1,10 +1,10 @@
 import { NextPage } from 'next';
 import { FormEvent, useRef, useState } from 'react';
+import LoadingIcon from '~icons/eos-icons/three-dots-loading.jsx';
 import FadeTransition from '@/components/transitions/FadeTransition';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Form from '@/components/ui/Form';
-import LoadingIcon from '@/components/ui/LoadingIcon';
 import Notification from '@/components/ui/Notification';
 import Overlay from '@/components/ui/Overlay';
 import TextInput from '@/components/ui/TextInput';
