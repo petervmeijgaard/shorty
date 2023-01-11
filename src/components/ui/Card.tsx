@@ -4,7 +4,7 @@ import { ComponentPropsWithoutRef, FC } from 'react';
 const Card: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...props }) => (
   <div
     className={cn(
-      'flex flex-col w-full p-8 gap-4 rounded border bg-neutral-50',
+      'flex w-full p-8 gap-4 rounded border bg-neutral-50',
       className,
     )}
     {...props}
