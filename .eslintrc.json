@@ -109,10 +109,23 @@
     ],
     "import/first": "error",
     "import/newline-after-import": "error",
+    "import/no-unresolved": [
+      2,
+      {
+        "ignore": [
+          "~icons"
+        ]
+      }
+    ],
     "import/order": [
       "error",
       {
         "pathGroups": [
+          {
+            "pattern": "~icons/**",
+            "group": "external",
+            "position": "after"
+          },
           {
             "pattern": "@/**",
             "group": "external",

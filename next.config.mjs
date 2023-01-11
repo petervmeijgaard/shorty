@@ -1,4 +1,6 @@
 // @ts-check
+import withIcons from './next-plugins/withIcons.mjs';
+
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
  * This is especially useful for Docker builds.
@@ -14,4 +16,5 @@ const config = {
     defaultLocale: 'en',
   },
 };
-export default config;
+
+export default withIcons(config);
