@@ -1,6 +1,7 @@
+/* eslint-disable no-underscore-dangle */
 import { z } from 'zod';
 import { shortenUrl } from '@/utils/shortenUrl';
-import { createTRPCRouter, publicProcedure } from '../trpc';
+import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc';
 
 export const shortyRouter = createTRPCRouter({
   shortenUrl: publicProcedure
@@ -19,6 +20,38 @@ export const shortyRouter = createTRPCRouter({
 
       return origin ? `${origin}/${shortUrl}` : shortUrl;
     }),
+
+  myUrls: protectedProcedure.query(async ({ ctx: { session, prisma } }) => {
+    const dbUrls = await prisma.url.findMany({
+      select: {
+        id: true,
+        url: true,
+        shortUrl: true,
+        _count: {
+          select: {
+            hits: true,
+          },
+        },
+      },
+      where: {
+        users: {
+          some: {
+            userId: session.user.id,
+          },
+        },
+      },
+      orderBy: {
+        url: 'asc',
+      },
+    });
+
+    return dbUrls.map(url => ({
+      id: url.id,
+      url: url.url,
+      shortUrl: url.shortUrl,
+      hits: url._count.hits,
+    }));
+  }),
 });
 
 export default shortyRouter;
