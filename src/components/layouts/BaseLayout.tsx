@@ -40,9 +40,7 @@ const BaseLayout: FC<PropsWithChildren> = ({ children }) => {
             )}
           </div>
         </div>
-        <div className="container flex flex-1 items-center justify-center p-4">
-          {children}
-        </div>
+        <div className="container flex flex-1">{children}</div>
       </div>
     </>
   );

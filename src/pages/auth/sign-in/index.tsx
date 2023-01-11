@@ -14,13 +14,15 @@ export const Login: NextPage<Props> = ({ providers }) => (
     <Head>
       <title>Shorty - Login</title>
     </Head>
-    <Card className="lg:w-1/2">
-      <form className="flex flex-1 flex-col items-start gap-4">
-        {Object.values(providers).map(provider => (
-          <ProviderLoginButton {...provider} key={provider.id} />
-        ))}
-      </form>
-    </Card>
+    <div className="flex flex-1 items-center justify-center">
+      <Card className="lg:w-1/2">
+        <form className="flex flex-1 flex-col items-start gap-4">
+          {Object.values(providers).map(provider => (
+            <ProviderLoginButton {...provider} key={provider.id} />
+          ))}
+        </form>
+      </Card>
+    </div>
   </>
 );
 
