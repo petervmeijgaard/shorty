@@ -1,10 +1,14 @@
 import cn from 'classnames';
-import { forwardRef, ComponentPropsWithoutRef } from 'react';
+import {
+  ComponentPropsWithoutRef,
+  forwardRef,
+  ForwardRefRenderFunction,
+} from 'react';
 
-const TextInput = forwardRef<
+const TextInput: ForwardRefRenderFunction<
   HTMLInputElement,
   ComponentPropsWithoutRef<'input'>
->(({ className, ...props }, ref) => (
+> = ({ className, ...props }, ref) => (
   <input
     ref={ref}
     className={cn(
@@ -13,9 +17,6 @@ const TextInput = forwardRef<
     )}
     {...props}
   />
-));
+);
 
-// eslint-disable-next-line functional/immutable-data
-TextInput.displayName = 'TextInput';
-
-export default TextInput;
+export default forwardRef(TextInput);
