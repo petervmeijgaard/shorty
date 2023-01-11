@@ -3,11 +3,10 @@ import { FormEvent, useRef, useState } from 'react';
 import FadeTransition from '@/components/transitions/FadeTransition';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
-import ErrorNotification from '@/components/ui/ErrorNotification';
 import Form from '@/components/ui/Form';
 import LoadingIcon from '@/components/ui/LoadingIcon';
+import Notification from '@/components/ui/Notification';
 import Overlay from '@/components/ui/Overlay';
-import SuccessNotification from '@/components/ui/SuccessNotification';
 import TextInput from '@/components/ui/TextInput';
 import { useDelayedLoading } from '@/hooks/useDelayedLoading';
 import { api } from '@/utils/api';
@@ -44,15 +43,15 @@ const AddLink: NextPage = () => {
     <>
       <Card className="lg:w-1/2">
         {mutation.isSuccess && (
-          <SuccessNotification>
+          <Notification.Success>
             Success! Your shortened URL has been copied to your clipboard
-          </SuccessNotification>
+          </Notification.Success>
         )}
         {mutation.isError && (
-          <ErrorNotification>
+          <Notification.Error>
             Whoops! Something went wrong. Please make sure you have entered a
             valid URL.
-          </ErrorNotification>
+          </Notification.Error>
         )}
         <Form className="sm:flex-row" onSubmit={onSubmit}>
           <TextInput
