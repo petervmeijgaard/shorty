@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { FC, PropsWithChildren } from 'react';
 
-const Layout: FC<PropsWithChildren> = ({ children }) => (
+const BaseLayout: FC<PropsWithChildren> = ({ children }) => (
   <>
     <Head>
       <title>Shorty - Shorten your URL</title>
@@ -17,4 +17,4 @@ const Layout: FC<PropsWithChildren> = ({ children }) => (
   </>
 );
 
-export default Layout;
+export default BaseLayout;
