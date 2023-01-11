@@ -7,7 +7,7 @@ type Props = ComponentPropsWithoutRef<'div'> & {
 };
 
 const FadeTransition: FC<Props> = ({
-  duration = 500,
+  duration = 150,
   isVisible,
   style,
   ...props
