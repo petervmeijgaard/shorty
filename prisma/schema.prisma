@@ -14,6 +14,7 @@ model Url {
   id       String    @id @default(cuid())
   url      String
   shortUrl String    @unique @map("short_url")
+  users    UrlUser[]
 
   @@map("urls")
 }
@@ -26,8 +27,19 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  urls          UrlUser[]
 
   @@map("users")
+}
+
+model UrlUser {
+  urlId  String @map("url_id")
+  userId String @map("user_id")
+  url    Url    @relation(fields: [urlId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@id([urlId, userId])
+  @@map("url_user")
 }
 
 model Account {
