@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@iconify-json/eos-icons': ^1.1.5
+  '@iconify-json/ri': ^1.1.4
   '@next-auth/prisma-adapter': ^1.0.5
   '@prisma/client': ^4.8.1
   '@react-spring/web': ^9.6.1
@@ -67,6 +68,7 @@ dependencies:
 
 devDependencies:
   '@iconify-json/eos-icons': 1.1.5
+  '@iconify-json/ri': 1.1.4
   '@svgr/core': 6.5.1
   '@types/md5': 2.3.2
   '@types/node': 18.11.18
@@ -362,6 +364,12 @@ packages:
 
   /@iconify-json/eos-icons/1.1.5:
     resolution: {integrity: sha512-dHTGdyJsk5fr1sK2yQKWZ/f3B720sxA6myJrhj0q981xnTpyBUl7jouL/RmbcV0EEFQ12aDkIlDwJ0zI3G/zag==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/ri/1.1.4:
+    resolution: {integrity: sha512-gAk2gQBVghgbMLOmbUCc3l4COMMH5sR3HhBqpjaPUFBbC4WsNNRyOD4RZgjlanU7DTgFrj4NarY5K2EkXaVxuw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
