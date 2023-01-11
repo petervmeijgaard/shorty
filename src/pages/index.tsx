@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Head from 'next/head';
 import { FormEvent, useRef, useState } from 'react';
 import LoadingIcon from '~icons/eos-icons/three-dots-loading.jsx';
 import FadeTransition from '@/components/transitions/FadeTransition';
@@ -41,6 +42,9 @@ const AddLink: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Shorty - Shorten your URL</title>
+      </Head>
       <Card className="flex-col lg:w-1/2">
         {mutation.isSuccess && (
           <Notification.Success>
