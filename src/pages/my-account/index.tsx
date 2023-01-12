@@ -10,10 +10,10 @@ import {
 import FadeTransition from '@/components/transitions/FadeTransition';
 import Card from '@/components/ui/Card';
 import Overlay from '@/components/ui/Overlay';
-import useModal from '@/hooks/useModal';
+import useVisibilityToggle from '@/hooks/useVisibilityToggle';
 
 export const MyAccount: NextPage = () => {
-  const modal = useModal();
+  const modal = useVisibilityToggle();
 
   return (
     <>
@@ -27,13 +27,13 @@ export const MyAccount: NextPage = () => {
           <div className="flex flex-1 flex-col gap-4">
             <MyUrls />
             <hr className="w-[calc(100% + 4rem)] -ml-4 border-t border-dotted border-neutral-400" />
-            <AccountSettings onDeleteAccount={modal.open} />
+            <AccountSettings onDeleteAccount={modal.show} />
           </div>
         </Card>
       </div>
       <FadeTransition isVisible={modal.isVisible}>
         <Overlay>
-          <DeleteAccountModal onCloseModal={modal.close} />
+          <DeleteAccountModal onCloseModal={modal.hide} />
         </Overlay>
       </FadeTransition>
     </>
