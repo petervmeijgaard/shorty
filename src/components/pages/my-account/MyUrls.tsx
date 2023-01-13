@@ -2,6 +2,7 @@ import cn from 'classnames';
 import Link from 'next/link';
 import { ComponentPropsWithoutRef, FC, memo } from 'react';
 import Shimmer from '@/components/ui/Shimmer';
+import TableBodyCell from '@/components/ui/TableBodyCell';
 import { api, RouterOutputs } from '@/utils/api';
 
 type SuccessStateProps = {
@@ -12,9 +13,7 @@ const SuccessState: FC<SuccessStateProps> = ({ data }) => {
   if (!data.length) {
     return (
       <tr>
-        <td className="p-2 font-light text-neutral-700" colSpan={3}>
-          No URLs shortened yet
-        </td>
+        <TableBodyCell colSpan={3}>No URLs shortened yet</TableBodyCell>
       </tr>
     );
   }
@@ -23,13 +22,13 @@ const SuccessState: FC<SuccessStateProps> = ({ data }) => {
     <>
       {data.map(url => (
         <tr key={url.id}>
-          <td className="p-2 font-light text-neutral-700">{url.url}</td>
-          <td className="p-2 font-light text-neutral-700">
+          <TableBodyCell>{url.url}</TableBodyCell>
+          <TableBodyCell>
             <Link href={`/${url.shortUrl}`} target="_blank">
               /{url.shortUrl}
             </Link>
-          </td>
-          <td className="p-2 font-light text-neutral-700">{url.hits}</td>
+          </TableBodyCell>
+          <TableBodyCell>{url.hits}</TableBodyCell>
         </tr>
       ))}
     </>
@@ -39,35 +38,35 @@ const SuccessState: FC<SuccessStateProps> = ({ data }) => {
 const LoadingState: FC = () => (
   <>
     <tr>
-      <td className="p-2">
+      <TableBodyCell>
         <Shimmer className="h-6 w-[250px]" />
-      </td>
-      <td className="p-2">
+      </TableBodyCell>
+      <TableBodyCell>
         <Shimmer className="h-6 w-[100px]" />
-      </td>
-      <td className="p-2">
+      </TableBodyCell>
+      <TableBodyCell>
         <Shimmer className="h-6 w-[30px]" />
-      </td>
+      </TableBodyCell>
     </tr>
     <tr>
-      <td className="p-2">
+      <TableBodyCell>
         <Shimmer className="h-6 w-[250px]" />
-      </td>
-      <td className="p-2">
+      </TableBodyCell>
+      <TableBodyCell>
         <Shimmer className="h-6 w-[100px]" />
-      </td>
-      <td className="p-2">
+      </TableBodyCell>
+      <TableBodyCell>
         <Shimmer className="h-6 w-[30px]" />
-      </td>
+      </TableBodyCell>
     </tr>
   </>
 );
 
 const ErrorState = () => (
   <tr>
-    <td className="p-2 font-light text-neutral-700" colSpan={3}>
+    <TableBodyCell colSpan={3}>
       Something went wrong and loading the URLs failed.
-    </td>
+    </TableBodyCell>
   </tr>
 );
 
