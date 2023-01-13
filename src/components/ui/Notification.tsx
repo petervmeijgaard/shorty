@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ComponentPropsWithoutRef, FC } from 'react';
+import { ComponentPropsWithoutRef, FC, memo } from 'react';
 
 const Base: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...props }) => (
   <div
@@ -18,8 +18,10 @@ const Success: FC<ComponentPropsWithoutRef<typeof Base>> = ({
   ...props
 }) => <Base className={cn('bg-green-900', className)} {...props} />;
 
-export default {
-  Base,
-  Error,
-  Success,
+const Notification = {
+  Base: memo(Base),
+  Error: memo(Error),
+  Success: memo(Success),
 };
+
+export default Notification;

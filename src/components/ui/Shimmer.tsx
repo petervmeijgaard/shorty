@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ComponentPropsWithoutRef, FC } from 'react';
+import { ComponentPropsWithoutRef, FC, memo } from 'react';
 
 const Shimmer: FC<ComponentPropsWithoutRef<'div'>> = ({
   className,
@@ -11,4 +11,4 @@ const Shimmer: FC<ComponentPropsWithoutRef<'div'>> = ({
   />
 );
 
-export default Shimmer;
+export default memo(Shimmer);

@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ComponentPropsWithoutRef, FC } from 'react';
+import { ComponentPropsWithoutRef, FC, memo } from 'react';
 
 const TableBodyCell: FC<ComponentPropsWithoutRef<'td'>> = ({
   className,
@@ -8,4 +8,4 @@ const TableBodyCell: FC<ComponentPropsWithoutRef<'td'>> = ({
   <td className={cn('p-2 font-light text-neutral-700', className)} {...props} />
 );
 
-export default TableBodyCell;
+export default memo(TableBodyCell);

@@ -3,6 +3,7 @@ import {
   ComponentPropsWithoutRef,
   forwardRef,
   ForwardRefRenderFunction,
+  memo,
 } from 'react';
 
 const TextInput: ForwardRefRenderFunction<
@@ -19,4 +20,4 @@ const TextInput: ForwardRefRenderFunction<
   />
 );
 
-export default forwardRef(TextInput);
+export default memo(forwardRef(TextInput));
