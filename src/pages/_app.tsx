@@ -1,7 +1,7 @@
 import { Analytics } from '@vercel/analytics/react';
+import { type AppType } from 'next/app';
 import { type Session } from 'next-auth';
 import { SessionProvider } from 'next-auth/react';
-import { type AppType } from 'next/app';
 import React from 'react';
 import BaseLayout from '@/components/layouts/BaseLayout';
 import { api } from '@/utils/api';

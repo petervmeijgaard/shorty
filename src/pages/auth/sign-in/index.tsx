@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
+import Head from 'next/head';
 import { type Provider } from 'next-auth/providers';
 import { getProviders, getSession } from 'next-auth/react';
-import Head from 'next/head';
 import { ProviderLoginButton } from '@/components/pages/auth/sign-in';
 import Card from '@/components/ui/Card';
 

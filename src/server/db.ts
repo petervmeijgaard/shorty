@@ -13,9 +13,7 @@ export const prisma =
       env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
   });
 
-export default {
-  prisma,
-};
+export default prisma;
 
 if (env.NODE_ENV !== 'production') {
   // eslint-disable-next-line functional/immutable-data

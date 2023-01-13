@@ -1,7 +1,7 @@
 import cn from 'classnames';
+import Image from 'next/image';
 import { Session } from 'next-auth';
 import { signOut, useSession } from 'next-auth/react';
-import Image from 'next/image';
 import { ComponentPropsWithoutRef, FC, memo } from 'react';
 import LogoutIcon from '~icons/ri/logout-box-r-line.jsx';
 import Shimmer from '@/components/ui/Shimmer';
