@@ -25,6 +25,7 @@ const AuthenticatedState: FC<Session> = ({ user }) => (
         className="w-full rounded"
         width={200}
         height={200}
+        priority
       />
     )}
     <div>
