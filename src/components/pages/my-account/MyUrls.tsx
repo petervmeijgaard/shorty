@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ComponentPropsWithoutRef, FC, memo } from 'react';
 import Shimmer from '@/components/ui/Shimmer';
 import TableBodyCell from '@/components/ui/TableBodyCell';
+import TableHeaderCell from '@/components/ui/TableHeaderCell';
 import { api, RouterOutputs } from '@/utils/api';
 
 type SuccessStateProps = {
@@ -82,9 +83,9 @@ const MyUrls: FC<ComponentPropsWithoutRef<'div'>> = ({
       <table className="table-auto">
         <thead>
           <tr className="border-b border-dotted">
-            <td className="p-2 font-bold">URL</td>
-            <td className="p-2 font-bold">Code</td>
-            <td className="p-2 font-bold">Hits</td>
+            <TableHeaderCell>URL</TableHeaderCell>
+            <TableHeaderCell>Code</TableHeaderCell>
+            <TableHeaderCell>Hits</TableHeaderCell>
           </tr>
         </thead>
         <tbody>
