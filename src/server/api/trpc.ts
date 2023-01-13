@@ -101,7 +101,6 @@ export const publicProcedure = t.procedure;
  */
 const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
-    // eslint-disable-next-line functional/no-throw-statement
     throw new TRPCError({ code: 'UNAUTHORIZED' });
   }
 

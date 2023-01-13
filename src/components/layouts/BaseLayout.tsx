@@ -1,7 +1,7 @@
-import { signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { signOut, useSession } from 'next-auth/react';
 import { FC, PropsWithChildren, useEffect, useRef } from 'react';
 import ArrowDownIcon from '~icons/ri/arrow-down-s-fill.jsx';
 import FadeTransition from '@/components/transitions/FadeTransition';

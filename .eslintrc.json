@@ -98,6 +98,7 @@
     ],
     "functional/no-mixed-type": "off",
     "functional/no-return-void": "off",
+    "functional/no-throw-statement": "off",
     "functional/prefer-readonly-type": "off",
     "import/extensions": [
       "error",

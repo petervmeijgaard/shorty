@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/react';
 import Head from 'next/head';
+import { getSession } from 'next-auth/react';
 import {
   PersonalInformation,
   AccountSettings,
@@ -26,7 +26,10 @@ export const MyAccount: NextPage = () => {
           <hr className="h-full border-l border-dotted border-neutral-400" />
           <div className="flex flex-1 flex-col gap-4">
             <MyUrls />
-            <hr className="w-[calc(100% + 4rem)] -ml-4 border-t border-dotted border-neutral-400" />
+            <hr
+              className="-ml-4 border-t border-dotted border-neutral-400"
+              style={{ width: 'calc(100% + 1rem)' }}
+            />
             <AccountSettings onDeleteAccount={modal.show} />
           </div>
         </Card>
