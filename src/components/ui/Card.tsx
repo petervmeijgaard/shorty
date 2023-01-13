@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ComponentPropsWithoutRef, FC } from 'react';
+import { ComponentPropsWithoutRef, FC, memo } from 'react';
 
 const Card: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...props }) => (
   <div
@@ -11,4 +11,4 @@ const Card: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...props }) => (
   />
 );
 
-export default Card;
+export default memo(Card);

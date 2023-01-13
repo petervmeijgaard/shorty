@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ComponentPropsWithoutRef, FC } from 'react';
+import { ComponentPropsWithoutRef, FC, memo } from 'react';
 
 const Overlay: FC<ComponentPropsWithoutRef<'div'>> = ({
   className,
@@ -14,4 +14,4 @@ const Overlay: FC<ComponentPropsWithoutRef<'div'>> = ({
   />
 );
 
-export default Overlay;
+export default memo(Overlay);

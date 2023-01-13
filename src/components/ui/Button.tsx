@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ComponentPropsWithoutRef, FC } from 'react';
+import { ComponentPropsWithoutRef, FC, memo } from 'react';
 
 const Button: FC<ComponentPropsWithoutRef<'button'>> = ({
   className,
@@ -14,4 +14,4 @@ const Button: FC<ComponentPropsWithoutRef<'button'>> = ({
   />
 );
 
-export default Button;
+export default memo(Button);

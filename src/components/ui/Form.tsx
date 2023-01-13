@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ComponentPropsWithoutRef, FC } from 'react';
+import { ComponentPropsWithoutRef, FC, memo } from 'react';
 
 const Form: FC<ComponentPropsWithoutRef<'form'>> = ({
   className,
@@ -11,4 +11,4 @@ const Form: FC<ComponentPropsWithoutRef<'form'>> = ({
   />
 );
 
-export default Form;
+export default memo(Form);
