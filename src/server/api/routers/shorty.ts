@@ -30,7 +30,7 @@ export const shortyRouter = createTRPCRouter({
         shortUrl: true,
         _count: {
           select: {
-            hits: true,
+            visits: true,
           },
         },
       },
@@ -50,7 +50,7 @@ export const shortyRouter = createTRPCRouter({
       id: url.id,
       url: url.url,
       shortUrl: url.shortUrl,
-      hits: url._count.hits,
+      visits: url._count.visits,
     }));
   }),
 
