@@ -21,7 +21,7 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async ({
     return { notFound: true };
   }
 
-  await prisma.urlHit.create({
+  await prisma.urlVisit.create({
     data: {
       urlId: result.id,
     },

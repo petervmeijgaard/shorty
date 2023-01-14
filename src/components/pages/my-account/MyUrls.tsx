@@ -9,7 +9,7 @@ import { api, RouterOutputs } from '@/utils/api';
 
 type DataTableRowProps = GetElementType<RouterOutputs['shorty']['myUrls']>;
 
-const DataTableRow: FC<DataTableRowProps> = ({ url, shortUrl, hits }) => (
+const DataTableRow: FC<DataTableRowProps> = ({ url, shortUrl, visits }) => (
   <tr>
     <TableBodyCell>{url}</TableBodyCell>
     <TableBodyCell>
@@ -17,7 +17,7 @@ const DataTableRow: FC<DataTableRowProps> = ({ url, shortUrl, hits }) => (
         /{shortUrl}
       </Link>
     </TableBodyCell>
-    <TableBodyCell>{hits}</TableBodyCell>
+    <TableBodyCell>{visits}</TableBodyCell>
   </tr>
 );
 
@@ -85,7 +85,7 @@ const MyUrls: FC<ComponentPropsWithoutRef<'div'>> = ({
           <tr className="border-b border-dotted">
             <TableHeaderCell>URL</TableHeaderCell>
             <TableHeaderCell>Code</TableHeaderCell>
-            <TableHeaderCell>Hits</TableHeaderCell>
+            <TableHeaderCell># of visits</TableHeaderCell>
           </tr>
         </thead>
         <tbody>{tableBody}</tbody>
