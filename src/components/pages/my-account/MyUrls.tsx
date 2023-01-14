@@ -1,29 +1,70 @@
 import cn from 'classnames';
 import Link from 'next/link';
-import { ComponentPropsWithoutRef, FC, memo, useMemo } from 'react';
+import React, {
+  ComponentPropsWithoutRef,
+  FC,
+  memo,
+  useMemo,
+  useRef,
+} from 'react';
+import ArrowDownIcon from '~icons/ri/arrow-down-s-fill.jsx';
+import ExternalIcon from '~icons/ri/external-link-line.jsx';
 import Shimmer from '@/components/ui/Shimmer';
 import TableBodyCell from '@/components/ui/TableBodyCell';
 import TableHeaderCell from '@/components/ui/TableHeaderCell';
+import { useOnClickOutside } from '@/hooks/useOnClickOutside';
+import useVisibilityToggle from '@/hooks/useVisibilityToggle';
 import { GetElementType } from '@/types/helpers';
 import { api, RouterOutputs } from '@/utils/api';
 
-type DataTableRowProps = GetElementType<RouterOutputs['shorty']['myUrls']>;
+type Url = GetElementType<RouterOutputs['shorty']['myUrls']>;
 
-const DataTableRow: FC<DataTableRowProps> = ({ url, shortUrl, visits }) => (
-  <tr>
-    <TableBodyCell>{url}</TableBodyCell>
-    <TableBodyCell>
-      <Link href={`/${shortUrl}`} target="_blank">
-        /{shortUrl}
-      </Link>
-    </TableBodyCell>
-    <TableBodyCell>{visits}</TableBodyCell>
-  </tr>
-);
+const DataTableRow: FC<Url> = ({ url, shortUrl, visits }) => {
+  const dropdownMenuRef = useRef(null);
+  const dropdownMenu = useVisibilityToggle(false);
+
+  useOnClickOutside(dropdownMenuRef, dropdownMenu.hide);
+
+  return (
+    <tr className="transition hover:bg-neutral-100">
+      <TableBodyCell>{shortUrl}</TableBodyCell>
+      <TableBodyCell>{url}</TableBodyCell>
+      <TableBodyCell>{visits}</TableBodyCell>
+      <TableBodyCell>
+        <div className="relative" ref={dropdownMenuRef}>
+          <button
+            onClick={dropdownMenu.toggle}
+            className={cn(
+              'flex flex-row items-center justify-center gap-2 rounded border border-neutral-700 py-2 px-3 text-neutral-700 transition bg-neutral-50 hover:bg-neutral-700 hover:text-white',
+              { 'rounded-b-none': dropdownMenu.isVisible },
+            )}
+          >
+            <span>Actions</span>
+            <ArrowDownIcon className="h-4 w-4" />
+          </button>
+          {dropdownMenu.isVisible && (
+            <div className="absolute left-0 z-10 -mt-px flex w-40 flex-1 flex-col rounded rounded-tl-none border border-neutral-700 bg-neutral-100 py-1 text-neutral-100">
+              <Link
+                className="flex flex-1 flex-row items-center gap-2 py-2 px-3 text-neutral-700 transition hover:bg-neutral-700 hover:text-white"
+                href={`/${shortUrl}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={dropdownMenu.hide}
+              >
+                <ExternalIcon />
+                <span>Visit</span>
+              </Link>
+            </div>
+          )}
+        </div>
+      </TableBodyCell>
+    </tr>
+  );
+};
 
 const NotFoundTableRow: FC = () => (
   <tr>
-    <TableBodyCell colSpan={3}>No URLs shortened yet</TableBodyCell>
+    <TableBodyCell colSpan={4}>No URLs shortened yet</TableBodyCell>
   </tr>
 );
 
@@ -38,12 +79,15 @@ const LoadingTableRow: FC = () => (
     <TableBodyCell>
       <Shimmer className="h-6 w-[30px]" />
     </TableBodyCell>
+    <TableBodyCell>
+      <Shimmer className="h-6 w-[24px]" />
+    </TableBodyCell>
   </tr>
 );
 
 const ErrorTableRow: FC = () => (
   <tr>
-    <TableBodyCell colSpan={3}>
+    <TableBodyCell colSpan={4}>
       Something went wrong and loading the URLs failed.
     </TableBodyCell>
   </tr>
@@ -83,9 +127,10 @@ const MyUrls: FC<ComponentPropsWithoutRef<'div'>> = ({
       <table className="table-auto">
         <thead>
           <tr className="border-b border-dotted">
-            <TableHeaderCell>URL</TableHeaderCell>
             <TableHeaderCell>Code</TableHeaderCell>
+            <TableHeaderCell>URL</TableHeaderCell>
             <TableHeaderCell># of visits</TableHeaderCell>
+            <TableHeaderCell />
           </tr>
         </thead>
         <tbody>{tableBody}</tbody>
