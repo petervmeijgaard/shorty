@@ -48,13 +48,16 @@ const PersonalInformation: FC<ComponentPropsWithoutRef<'div'>> = ({
   const session = useSession();
 
   return (
-    <div className={cn('flex flex-col gap-4', className)} {...props}>
+    <div
+      className={cn('flex flex-col gap-4 items-start', className)}
+      {...props}
+    >
       {session.status === 'loading' && <LoadingState />}
       {session.status === 'authenticated' && (
         <AuthenticatedState {...session.data} />
       )}
       <button
-        className="flex flex-row items-center justify-center gap-3 rounded border border-neutral-700 py-2 px-3 text-neutral-700 transition hover:bg-neutral-700 hover:text-white"
+        className="flex flex-row items-center gap-2 justify-self-start rounded border border-neutral-700 py-2 px-3 text-neutral-700 transition hover:bg-neutral-700 hover:text-white"
         disabled={session.status === 'loading'}
         onClick={() => void signOut()}
       >
