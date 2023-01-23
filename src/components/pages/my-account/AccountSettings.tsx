@@ -1,19 +1,21 @@
 import { FC, memo } from 'react';
+import { useModal } from '@/context/ModalContext';
+import DeleteAccountModal from '../../modals/DeleteAccountModal';
 
-type Props = {
-  onDeleteAccount: () => void;
+const AccountSettings: FC = () => {
+  const modal = useModal(DeleteAccountModal);
+
+  return (
+    <div className="flex flex-col items-start gap-4">
+      <h2 className="text-2xl font-light text-neutral-900">Account Settings</h2>
+      <button
+        className="rounded border border-red-700 py-2 px-3 text-red-700 transition hover:bg-red-700 hover:text-white"
+        onClick={modal.show}
+      >
+        Delete account
+      </button>
+    </div>
+  );
 };
-
-const AccountSettings: FC<Props> = ({ onDeleteAccount }) => (
-  <div className="flex flex-col items-start gap-4">
-    <h2 className="text-2xl font-light text-neutral-900">Account Settings</h2>
-    <button
-      className="rounded border border-red-700 py-2 px-3 text-red-700 transition hover:bg-red-700 hover:text-white"
-      onClick={onDeleteAccount}
-    >
-      Delete account
-    </button>
-  </div>
-);
 
 export default memo(AccountSettings);
