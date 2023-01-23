@@ -54,6 +54,23 @@ export const shortyRouter = createTRPCRouter({
     }));
   }),
 
+  unlinkUrl: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx: { session, prisma }, input: shortUrl }) => {
+      await prisma.urlUser.deleteMany({
+        where: {
+          AND: {
+            userId: session.user.id,
+            url: {
+              shortUrl,
+            },
+          },
+        },
+      });
+
+      return null;
+    }),
+
   deleteAccount: protectedProcedure.mutation(
     async ({ ctx: { session, prisma } }) => {
       await prisma.user.delete({
