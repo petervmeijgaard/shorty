@@ -9,9 +9,12 @@ import React, {
 } from 'react';
 import ArrowDownIcon from '~icons/ri/arrow-down-s-fill.jsx';
 import ExternalIcon from '~icons/ri/external-link-line.jsx';
+import UnlinkIcon from '~icons/ri/link-unlink.jsx';
+import UnlinkSiteModal from '@/components/modals/UnlinkSiteModal';
 import Shimmer from '@/components/ui/Shimmer';
 import TableBodyCell from '@/components/ui/TableBodyCell';
 import TableHeaderCell from '@/components/ui/TableHeaderCell';
+import { useModal } from '@/context/ModalContext';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 import useVisibilityToggle from '@/hooks/useVisibilityToggle';
 import { GetElementType } from '@/types/helpers';
@@ -22,6 +25,9 @@ type Url = GetElementType<RouterOutputs['shorty']['myUrls']>;
 const DataTableRow: FC<Url> = ({ url, shortUrl, visits }) => {
   const dropdownMenuRef = useRef(null);
   const dropdownMenu = useVisibilityToggle(false);
+  const modal = useModal(modalProps => (
+    <UnlinkSiteModal shortUrl={shortUrl} {...modalProps} />
+  ));
 
   useOnClickOutside(dropdownMenuRef, dropdownMenu.hide);
 
@@ -54,6 +60,13 @@ const DataTableRow: FC<Url> = ({ url, shortUrl, visits }) => {
                 <ExternalIcon />
                 <span>Visit</span>
               </Link>
+              <button
+                className="flex flex-1 flex-row items-center gap-2 py-2 px-3 text-neutral-700 transition hover:bg-neutral-700 hover:text-white"
+                onClick={modal.show}
+              >
+                <UnlinkIcon />
+                <span>Unlink</span>
+              </button>
             </div>
           )}
         </div>
