@@ -4,6 +4,7 @@ import { type Session } from 'next-auth';
 import { SessionProvider } from 'next-auth/react';
 import React from 'react';
 import BaseLayout from '@/components/layouts/BaseLayout';
+import { ModalProvider, Modal } from '@/context/ModalContext';
 import { api } from '@/utils/api';
 
 import '@/styles/globals.css';
@@ -13,10 +14,13 @@ const MyApp: AppType<{ session: Session | null }> = ({
   pageProps: { session, ...pageProps },
 }) => (
   <SessionProvider session={session}>
-    <BaseLayout>
-      <Component {...pageProps} />
-    </BaseLayout>
-    <Analytics />
+    <ModalProvider>
+      <BaseLayout>
+        <Component {...pageProps} />
+        <Modal />
+      </BaseLayout>
+      <Analytics />
+    </ModalProvider>
   </SessionProvider>
 );
 
