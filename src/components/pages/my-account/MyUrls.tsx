@@ -26,14 +26,14 @@ type Url = GetElementType<RouterOutputs['shorty']['myUrls']>;
 const DataTableRow: FC<Url> = ({ url, shortUrl, visits }) => {
   const dropdownMenuRef = useRef(null);
   const dropdownMenu = useVisibilityToggle(false);
-  const modal = useModal(modalProps => (
+  const unlinkSiteModal = useModal(modalProps => (
     <UnlinkSiteModal shortUrl={shortUrl} {...modalProps} />
   ));
 
   const onUnlink = useCallback(() => {
-    modal.show();
+    unlinkSiteModal.show();
     dropdownMenu.hide();
-  }, [dropdownMenu, modal]);
+  }, [dropdownMenu, unlinkSiteModal]);
 
   useOnClickOutside(dropdownMenuRef, dropdownMenu.hide);
 
