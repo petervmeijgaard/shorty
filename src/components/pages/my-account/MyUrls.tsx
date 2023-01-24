@@ -4,6 +4,7 @@ import React, {
   ComponentPropsWithoutRef,
   FC,
   memo,
+  useCallback,
   useMemo,
   useRef,
 } from 'react';
@@ -28,6 +29,11 @@ const DataTableRow: FC<Url> = ({ url, shortUrl, visits }) => {
   const modal = useModal(modalProps => (
     <UnlinkSiteModal shortUrl={shortUrl} {...modalProps} />
   ));
+
+  const onUnlink = useCallback(() => {
+    modal.show();
+    dropdownMenu.hide();
+  }, [dropdownMenu, modal]);
 
   useOnClickOutside(dropdownMenuRef, dropdownMenu.hide);
 
@@ -62,7 +68,7 @@ const DataTableRow: FC<Url> = ({ url, shortUrl, visits }) => {
               </Link>
               <button
                 className="flex flex-1 flex-row items-center gap-2 py-2 px-3 text-neutral-700 transition hover:bg-neutral-700 hover:text-white"
-                onClick={modal.show}
+                onClick={onUnlink}
               >
                 <UnlinkIcon />
                 <span>Unlink</span>
