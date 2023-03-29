@@ -1,8 +1,8 @@
-import { FC, memo } from 'react';
+import { memo } from 'react';
 import { useModal } from '@/context/ModalContext';
 import DeleteAccountModal from '../../modals/DeleteAccountModal';
 
-const AccountSettings: FC = () => {
+function AccountSettings() {
   const modal = useModal(DeleteAccountModal);
 
   return (
@@ -16,6 +16,6 @@ const AccountSettings: FC = () => {
       </button>
     </div>
   );
-};
+}
 
 export default memo(AccountSettings);

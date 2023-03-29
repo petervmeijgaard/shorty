@@ -1,22 +1,22 @@
 import cn from 'classnames';
-import { ComponentPropsWithoutRef, FC, memo } from 'react';
+import { ComponentProps, memo } from 'react';
 
-const Base: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...props }) => (
-  <div
-    className={cn('flex flex-1 p-4 rounded text-neutral-50', className)}
-    {...props}
-  />
-);
+function Base({ className, ...props }: ComponentProps<'div'>) {
+  return (
+    <div
+      className={cn('flex flex-1 p-4 rounded text-neutral-50', className)}
+      {...props}
+    />
+  );
+}
 
-const Error: FC<ComponentPropsWithoutRef<typeof Base>> = ({
-  className,
-  ...props
-}) => <Base className={cn('bg-red-900', className)} {...props} />;
+function Error({ className, ...props }: ComponentProps<typeof Base>) {
+  return <Base className={cn('bg-red-900', className)} {...props} />;
+}
 
-const Success: FC<ComponentPropsWithoutRef<typeof Base>> = ({
-  className,
-  ...props
-}) => <Base className={cn('bg-green-900', className)} {...props} />;
+function Success({ className, ...props }: ComponentProps<typeof Base>) {
+  return <Base className={cn('bg-green-900', className)} {...props} />;
+}
 
 const Notification = {
   Base: memo(Base),

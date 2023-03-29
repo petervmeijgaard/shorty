@@ -2,13 +2,13 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { signOut, useSession } from 'next-auth/react';
-import { FC, PropsWithChildren, useEffect, useRef } from 'react';
+import { memo, PropsWithChildren, useEffect, useRef } from 'react';
 import ArrowDownIcon from '~icons/ri/arrow-down-s-fill.jsx';
 import FadeTransition from '@/components/transitions/FadeTransition';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 import useVisibilityToggle from '@/hooks/useVisibilityToggle';
 
-const BaseLayout: FC<PropsWithChildren> = ({ children }) => {
+function BaseLayout({ children }: PropsWithChildren) {
   const dropdownRef = useRef(null);
   const dropdownMenu = useVisibilityToggle();
   const router = useRouter();
@@ -82,6 +82,6 @@ const BaseLayout: FC<PropsWithChildren> = ({ children }) => {
       </div>
     </>
   );
-};
+}
 
-export default BaseLayout;
+export default memo(BaseLayout);

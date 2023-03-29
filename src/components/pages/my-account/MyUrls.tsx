@@ -1,12 +1,6 @@
 import cn from 'classnames';
 import Link from 'next/link';
-import React, {
-  ComponentPropsWithoutRef,
-  FC,
-  memo,
-  useMemo,
-  useRef,
-} from 'react';
+import React, { ComponentProps, memo, useMemo, useRef } from 'react';
 import ArrowDownIcon from '~icons/ri/arrow-down-s-fill.jsx';
 import ExternalIcon from '~icons/ri/external-link-line.jsx';
 import UnlinkIcon from '~icons/ri/link-unlink.jsx';
@@ -22,7 +16,7 @@ import { api, RouterOutputs } from '@/utils/api';
 
 type Url = GetElementType<RouterOutputs['shorty']['myUrls']>;
 
-const DataTableRow: FC<Url> = ({ url, shortUrl, visits }) => {
+function DataTableRow({ url, shortUrl, visits }: Url) {
   const dropdownMenuRef = useRef(null);
   const dropdownMenu = useVisibilityToggle(false);
   const modal = useModal(modalProps => (
@@ -73,43 +67,46 @@ const DataTableRow: FC<Url> = ({ url, shortUrl, visits }) => {
       </TableBodyCell>
     </tr>
   );
-};
+}
 
-const NotFoundTableRow: FC = () => (
-  <tr>
-    <TableBodyCell colSpan={4}>No URLs shortened yet</TableBodyCell>
-  </tr>
-);
+function NotFoundTableRow() {
+  return (
+    <tr>
+      <TableBodyCell colSpan={4}>No URLs shortened yet</TableBodyCell>
+    </tr>
+  );
+}
 
-const LoadingTableRow: FC = () => (
-  <tr>
-    <TableBodyCell>
-      <Shimmer className="h-6 w-[250px]" />
-    </TableBodyCell>
-    <TableBodyCell>
-      <Shimmer className="h-6 w-[100px]" />
-    </TableBodyCell>
-    <TableBodyCell>
-      <Shimmer className="h-6 w-[30px]" />
-    </TableBodyCell>
-    <TableBodyCell>
-      <Shimmer className="h-6 w-[24px]" />
-    </TableBodyCell>
-  </tr>
-);
+function LoadingTableRow() {
+  return (
+    <tr>
+      <TableBodyCell>
+        <Shimmer className="h-6 w-[250px]" />
+      </TableBodyCell>
+      <TableBodyCell>
+        <Shimmer className="h-6 w-[100px]" />
+      </TableBodyCell>
+      <TableBodyCell>
+        <Shimmer className="h-6 w-[30px]" />
+      </TableBodyCell>
+      <TableBodyCell>
+        <Shimmer className="h-6 w-[24px]" />
+      </TableBodyCell>
+    </tr>
+  );
+}
 
-const ErrorTableRow: FC = () => (
-  <tr>
-    <TableBodyCell colSpan={4}>
-      Something went wrong and loading the URLs failed.
-    </TableBodyCell>
-  </tr>
-);
+function ErrorTableRow() {
+  return (
+    <tr>
+      <TableBodyCell colSpan={4}>
+        Something went wrong and loading the URLs failed.
+      </TableBodyCell>
+    </tr>
+  );
+}
 
-const MyUrls: FC<ComponentPropsWithoutRef<'div'>> = ({
-  className,
-  ...props
-}) => {
+function MyUrls({ className, ...props }: ComponentProps<'div'>) {
   const query = api.shorty.myUrls.useQuery();
 
   const tableBody = useMemo(() => {
@@ -150,6 +147,6 @@ const MyUrls: FC<ComponentPropsWithoutRef<'div'>> = ({
       </table>
     </div>
   );
-};
+}
 
 export default memo(MyUrls);

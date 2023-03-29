@@ -1,14 +1,13 @@
 import cn from 'classnames';
-import { ComponentPropsWithoutRef, FC, memo } from 'react';
+import { ComponentProps, memo } from 'react';
 
-const Form: FC<ComponentPropsWithoutRef<'form'>> = ({
-  className,
-  ...props
-}) => (
-  <form
-    className={cn('flex flex-1 flex-col items-start gap-4', className)}
-    {...props}
-  />
-);
+function Form({ className, ...props }: ComponentProps<'form'>) {
+  return (
+    <form
+      className={cn('flex flex-1 flex-col items-start gap-4', className)}
+      {...props}
+    />
+  );
+}
 
 export default memo(Form);

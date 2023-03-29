@@ -1,5 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
-import { type AppType } from 'next/app';
+import { AppProps } from 'next/app';
 import { type Session } from 'next-auth';
 import { SessionProvider } from 'next-auth/react';
 import React from 'react';
@@ -9,19 +9,21 @@ import { api } from '@/utils/api';
 
 import '@/styles/globals.css';
 
-const MyApp: AppType<{ session: Session | null }> = ({
+function MyApp({
   Component,
   pageProps: { session, ...pageProps },
-}) => (
-  <SessionProvider session={session}>
-    <ModalProvider>
-      <BaseLayout>
-        <Component {...pageProps} />
-        <Modal />
-      </BaseLayout>
-      <Analytics />
-    </ModalProvider>
-  </SessionProvider>
-);
+}: AppProps<{ session: Session | null }>) {
+  return (
+    <SessionProvider session={session}>
+      <ModalProvider>
+        <BaseLayout>
+          <Component {...pageProps} />
+          <Modal />
+        </BaseLayout>
+        <Analytics />
+      </ModalProvider>
+    </SessionProvider>
+  );
+}
 
 export default api.withTRPC(MyApp);

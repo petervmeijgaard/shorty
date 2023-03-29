@@ -1,10 +1,10 @@
 import { signOut } from 'next-auth/react';
-import { FC, memo } from 'react';
+import { memo } from 'react';
 import LoadingIcon from '~icons/eos-icons/bubble-loading.jsx';
 import { ModalProps } from '@/context/ModalContext';
 import { api } from '@/utils/api';
 
-const DeleteAccountModal: FC<ModalProps> = ({ hide }) => {
+function DeleteAccountModal({ hide }: ModalProps) {
   const deleteAccount = api.shorty.deleteAccount.useMutation({
     onSuccess: async () => signOut(),
   });
@@ -37,6 +37,6 @@ const DeleteAccountModal: FC<ModalProps> = ({ hide }) => {
       </div>
     </div>
   );
-};
+}
 
 export default memo(DeleteAccountModal);

@@ -4,7 +4,7 @@ import Overlay from '@/components/ui/Overlay';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 import { ModalContext } from './ModalContext';
 
-const ModalContainer = () => {
+function ModalContainer() {
   const ref = useRef(null);
   const { state, hide, hideAll, hasModals } = useContext(ModalContext);
 
@@ -21,6 +21,6 @@ const ModalContainer = () => {
       </Overlay>
     </FadeTransition>
   );
-};
+}
 
 export default memo(ModalContainer);

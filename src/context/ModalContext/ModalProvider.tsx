@@ -1,9 +1,9 @@
-import { FC, PropsWithChildren, useCallback, useMemo, useReducer } from 'react';
+import { PropsWithChildren, useCallback, useMemo, useReducer } from 'react';
 import { ModalContext } from './ModalContext';
 import { initialState, reducer } from './reducer';
 import { ModalComponent, ModalId } from './types';
 
-const ModalProvider: FC<PropsWithChildren> = ({ children }) => {
+function ModalProvider({ children }: PropsWithChildren) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const hasModals = useMemo(() => state.length > 0, [state]);
@@ -47,6 +47,6 @@ const ModalProvider: FC<PropsWithChildren> = ({ children }) => {
       {children}
     </ModalContext.Provider>
   );
-};
+}
 
 export default ModalProvider;

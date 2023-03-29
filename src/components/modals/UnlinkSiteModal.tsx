@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { memo } from 'react';
 import LoadingIcon from '~icons/eos-icons/bubble-loading.jsx';
 import { ModalProps } from '@/context/ModalContext';
 import { api } from '@/utils/api';
@@ -7,7 +7,7 @@ type Props = ModalProps & {
   shortUrl: string;
 };
 
-const UnlinkSiteModal: FC<Props> = ({ hide, shortUrl }) => {
+function UnlinkSiteModal({ hide, shortUrl }: Props) {
   const utils = api.useContext();
   const unlinkUrl = api.shorty.unlinkUrl.useMutation({
     onSuccess: async () => {
@@ -42,6 +42,6 @@ const UnlinkSiteModal: FC<Props> = ({ hide, shortUrl }) => {
       </div>
     </div>
   );
-};
+}
 
 export default memo(UnlinkSiteModal);

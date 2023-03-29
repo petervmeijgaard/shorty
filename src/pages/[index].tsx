@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetServerSidePropsContext } from 'next';
 import Card from '@/components/ui/Card';
 import { prisma } from '@/server/db';
 
@@ -6,15 +6,13 @@ type Query = {
   readonly index: string;
 };
 
-type Props = {
-  //
-};
+export async function getServerSideProps(
+  ctx: GetServerSidePropsContext<Query>,
+) {
+  const { index: shortUrl } = ctx.params || {};
 
-export const getServerSideProps: GetServerSideProps<Props, Query> = async ({
-  params,
-}) => {
   const result = await prisma.url.findFirst({
-    where: { shortUrl: params?.index },
+    where: { shortUrl },
   });
 
   if (!result) {
@@ -33,12 +31,12 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async ({
       destination: result.url,
     },
   };
-};
+}
 
-export const GetAll: NextPage = () => (
-  <div className="flex flex-1 items-center justify-center">
-    <Card className="lg:w-1/2">You should not see this...</Card>
-  </div>
-);
-
-export default GetAll;
+export default function GetAll() {
+  return (
+    <div className="flex flex-1 items-center justify-center">
+      <Card className="lg:w-1/2">You should not see this...</Card>
+    </div>
+  );
+}

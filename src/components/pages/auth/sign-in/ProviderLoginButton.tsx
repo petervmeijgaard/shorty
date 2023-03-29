@@ -1,6 +1,6 @@
 import { Provider } from 'next-auth/providers';
 import { signIn } from 'next-auth/react';
-import { FC, memo } from 'react';
+import { memo } from 'react';
 import GoogleIcon from '~icons/ri/google-fill.jsx';
 import LockIcon from '~icons/ri/lock-fill.jsx';
 import Button from '@/components/ui/Button';
@@ -12,7 +12,7 @@ const iconMap = {
 
 type IconNames = keyof typeof iconMap;
 
-export const ProviderLoginButton: FC<Provider> = ({ name, id }) => {
+function ProviderLoginButton({ name, id }: Provider) {
   const Icon = iconMap[id as IconNames] || iconMap.default;
 
   return (
@@ -26,6 +26,6 @@ export const ProviderLoginButton: FC<Provider> = ({ name, id }) => {
       <span>Sign in with {name}</span>
     </Button>
   );
-};
+}
 
 export default memo(ProviderLoginButton);

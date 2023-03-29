@@ -1,4 +1,3 @@
-import { NextPage } from 'next';
 import Head from 'next/head';
 import { FormEvent, useRef, useState } from 'react';
 import LoadingIcon from '~icons/eos-icons/three-dots-loading.jsx';
@@ -13,7 +12,7 @@ import { useDelayedLoading } from '@/hooks/useDelayedLoading';
 import { api } from '@/utils/api';
 import { copyToClipboard } from '@/utils/copyToClipboard';
 
-const AddLink: NextPage = () => {
+export default function AddLink() {
   const [url, setUrl] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const mutation = api.shorty.shortenUrl.useMutation();
@@ -78,6 +77,4 @@ const AddLink: NextPage = () => {
       </div>
     </>
   );
-};
-
-export default AddLink;
+}
