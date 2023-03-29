@@ -43,7 +43,7 @@ const DataTableRow: FC<Url> = ({ url, shortUrl, visits }) => {
       <TableBodyCell>{url}</TableBodyCell>
       <TableBodyCell>{visits}</TableBodyCell>
       <TableBodyCell>
-        <div className="relative" ref={dropdownMenuRef}>
+        <div className="relative z-10" ref={dropdownMenuRef}>
           <button
             onClick={dropdownMenu.toggle}
             className={cn(

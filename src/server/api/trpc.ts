@@ -24,7 +24,7 @@ import { prisma } from '../db';
  *
  */
 
-type CreateContextOptions = CreateNextContextOptions & {
+type CreateContextOptions = {
   session: Session | null;
 };
 
@@ -39,6 +39,7 @@ type CreateContextOptions = CreateNextContextOptions & {
  */
 const createInnerTRPCContext = (options: CreateContextOptions) => ({
   ...options,
+  session: options.session,
   prisma,
 });
 
@@ -65,14 +66,12 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
  * This is where the trpc api is initialized, connecting the context and
  * transformer
  */
-const t = initTRPC
-  .context<Awaited<ReturnType<typeof createTRPCContext>>>()
-  .create({
-    transformer: superjson,
-    errorFormatter({ shape }) {
-      return shape;
-    },
-  });
+const t = initTRPC.context<typeof createTRPCContext>().create({
+  transformer: superjson,
+  errorFormatter({ shape }) {
+    return shape;
+  },
+});
 /**
  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)
  *

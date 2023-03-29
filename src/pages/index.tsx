@@ -45,7 +45,7 @@ const AddLink: NextPage = () => {
       <Head>
         <title>Shorty - Shorten your URL</title>
       </Head>
-      <div className="flex flex-1 items-center justify-center">
+      <div className="-mt-4 flex flex-1 items-center justify-center p-4">
         <Card className="flex-col lg:w-1/2">
           {mutation.isSuccess && (
             <Notification.Success>

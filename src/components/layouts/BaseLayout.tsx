@@ -34,7 +34,7 @@ const BaseLayout: FC<PropsWithChildren> = ({ children }) => {
         <link rel="icon" href="/public/favicon.ico" />
       </Head>
       <div className="flex min-h-screen min-w-full flex-col items-center justify-center bg-neutral-900">
-        <div className="container flex w-full items-center justify-between py-4">
+        <div className="container flex w-full items-center justify-between p-4">
           <Link className="flex text-neutral-100" href="/">
             Shorty
           </Link>
