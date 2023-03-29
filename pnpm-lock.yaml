@@ -66,6 +66,9 @@ devDependencies:
   '@svgr/core':
     specifier: ^7.0.0
     version: 7.0.0
+  '@svgr/plugin-jsx':
+    specifier: ^7.0.0
+    version: 7.0.0
   '@types/md5':
     specifier: ^2.3.2
     version: 2.3.2
@@ -815,6 +818,26 @@ packages:
       - supports-color
     dev: true
 
+  /@svgr/hast-util-to-babel-ast@7.0.0:
+    resolution: {integrity: sha512-42Ej9sDDEmsJKjrfQ1PHmiDiHagh/u9AHO9QWbeNx4KmD9yS5d1XHmXUNINfUcykAU+4431Cn+k6Vn5mWBYimQ==}
+    engines: {node: '>=14'}
+    dependencies:
+      '@babel/types': 7.21.3
+      entities: 4.4.0
+    dev: true
+
+  /@svgr/plugin-jsx@7.0.0:
+    resolution: {integrity: sha512-SWlTpPQmBUtLKxXWgpv8syzqIU8XgFRvyhfkam2So8b3BE0OS0HPe5UfmlJ2KIC+a7dpuuYovPR2WAQuSyMoPw==}
+    engines: {node: '>=14'}
+    dependencies:
+      '@babel/core': 7.21.3
+      '@svgr/babel-preset': 7.0.0(@babel/core@7.21.3)
+      '@svgr/hast-util-to-babel-ast': 7.0.0
+      svg-parser: 2.0.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@swc/helpers@0.4.14:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
     dependencies:
@@ -1525,6 +1548,11 @@ packages:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.2.1
+    dev: true
+
+  /entities@4.4.0:
+    resolution: {integrity: sha512-oYp7156SP8LkeGD0GF85ad1X9Ai79WtRsZ2gxJqtBuzH+98YUV6jkHEKlZkMbcrjJjIVJNIDP/3WL9wQkoPbWA==}
+    engines: {node: '>=0.12'}
     dev: true
 
   /error-ex@1.3.2:
@@ -3463,6 +3491,10 @@ packages:
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+    dev: true
+
+  /svg-parser@2.0.4:
+    resolution: {integrity: sha512-e4hG1hRwoOdRb37cIMSgzNsxyzKfayW6VOflrwvR+/bzrkyxY/31WkbgnQpgtrNp1SdpJvpUAGTa/ZoiPNDuRQ==}
     dev: true
 
   /synckit@0.8.5:
