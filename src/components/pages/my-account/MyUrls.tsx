@@ -45,7 +45,7 @@ function DataTableRow({ url, shortUrl, visits }: Url) {
           {dropdownMenu.isVisible && (
             <div className="absolute left-0 z-10 -mt-px flex w-40 flex-1 flex-col rounded rounded-tl-none border border-neutral-700 bg-neutral-100 py-1 text-neutral-100">
               <Link
-                className="flex flex-1 flex-row items-center gap-2 py-2 px-3 text-neutral-700 transition hover:bg-neutral-700 hover:text-white"
+                className="flex flex-1 flex-row items-center gap-2 px-3 py-2 text-neutral-700 transition hover:bg-neutral-700 hover:text-white"
                 href={`/${shortUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -55,7 +55,7 @@ function DataTableRow({ url, shortUrl, visits }: Url) {
                 <span>Visit</span>
               </Link>
               <button
-                className="flex flex-1 flex-row items-center gap-2 py-2 px-3 text-neutral-700 transition hover:bg-neutral-700 hover:text-white"
+                className="flex flex-1 flex-row items-center gap-2 px-3 py-2 text-neutral-700 transition hover:bg-neutral-700 hover:text-white"
                 onClick={modal.show}
               >
                 <UnlinkIcon />

@@ -2,9 +2,9 @@ import { GetServerSidePropsContext } from 'next';
 import Card from '@/components/ui/Card';
 import { prisma } from '@/server/db';
 
-type Query = {
-  readonly index: string;
-};
+type Query = Readonly<{
+  index: string;
+}>;
 
 export async function getServerSideProps(
   ctx: GetServerSidePropsContext<Query>,

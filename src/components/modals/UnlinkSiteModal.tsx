@@ -26,14 +26,14 @@ function UnlinkSiteModal({ hide, shortUrl }: Props) {
       <hr className="border-t border-dotted border-neutral-400" />
       <div className="flex gap-2 p-4">
         <button
-          className="flex flex-row items-center gap-2 rounded border border-red-700 py-2 px-3 text-red-700 transition hover:bg-red-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-red-700"
+          className="flex flex-row items-center gap-2 rounded border border-red-700 px-3 py-2 text-red-700 transition hover:bg-red-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-red-700"
           onClick={() => unlinkUrl.mutate(shortUrl)}
           disabled={unlinkUrl.isLoading}
         >
           {unlinkUrl.isLoading ? <LoadingIcon /> : <>Confirm</>}
         </button>
         <button
-          className="flex flex-row items-center gap-2 rounded border border-neutral-700 py-2 px-3 text-neutral-700 transition hover:bg-neutral-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-neutral-700"
+          className="flex flex-row items-center gap-2 rounded border border-neutral-700 px-3 py-2 text-neutral-700 transition hover:bg-neutral-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-neutral-700"
           onClick={hide}
           disabled={unlinkUrl.isLoading}
         >

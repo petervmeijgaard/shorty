@@ -58,7 +58,7 @@ function PersonalInformation({ className, ...props }: ComponentProps<'div'>) {
         <AuthenticatedState {...session.data} />
       )}
       <button
-        className="flex flex-row items-center gap-2 justify-self-start rounded border border-neutral-700 py-2 px-3 text-neutral-700 transition hover:bg-neutral-700 hover:text-white"
+        className="flex flex-row items-center gap-2 justify-self-start rounded border border-neutral-700 px-3 py-2 text-neutral-700 transition hover:bg-neutral-700 hover:text-white"
         disabled={session.status === 'loading'}
         onClick={() => void signOut()}
       >

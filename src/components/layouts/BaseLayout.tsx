@@ -41,7 +41,7 @@ function BaseLayout({ children }: PropsWithChildren) {
           <div className="flex gap-4">
             {!session && (
               <Link
-                className="rounded border border-neutral-100 py-2 px-3 text-neutral-100 transition hover:bg-neutral-100 hover:text-neutral-900"
+                className="rounded border border-neutral-100 px-3 py-2 text-neutral-100 transition hover:bg-neutral-100 hover:text-neutral-900"
                 href="/auth/sign-in"
               >
                 Sign in
@@ -51,7 +51,7 @@ function BaseLayout({ children }: PropsWithChildren) {
             {session && (
               <div className="relative" ref={dropdownRef}>
                 <button
-                  className="flex flex-row items-center gap-2 rounded border border-neutral-100 py-2 px-3 text-neutral-100 transition hover:bg-neutral-100 hover:text-neutral-900"
+                  className="flex flex-row items-center gap-2 rounded border border-neutral-100 px-3 py-2 text-neutral-100 transition hover:bg-neutral-100 hover:text-neutral-900"
                   onClick={dropdownMenu.toggle}
                 >
                   <span>Account</span>
@@ -61,13 +61,13 @@ function BaseLayout({ children }: PropsWithChildren) {
                 <FadeTransition isVisible={dropdownMenu.isVisible}>
                   <div className="absolute right-0 z-10 mt-4 flex w-56 flex-1 flex-col rounded border border-neutral-100 bg-neutral-900 py-1 text-neutral-100">
                     <Link
-                      className="flex flex-1 py-2 px-3 text-neutral-100 transition hover:bg-neutral-100 hover:text-neutral-900"
+                      className="flex flex-1 px-3 py-2 text-neutral-100 transition hover:bg-neutral-100 hover:text-neutral-900"
                       href="/my-account"
                     >
                       My Account
                     </Link>
                     <button
-                      className="flex flex-1 py-2 px-3 text-neutral-100 transition hover:bg-neutral-100 hover:text-neutral-900"
+                      className="flex flex-1 px-3 py-2 text-neutral-100 transition hover:bg-neutral-100 hover:text-neutral-900"
                       onClick={() => void signOut()}
                     >
                       Sign out

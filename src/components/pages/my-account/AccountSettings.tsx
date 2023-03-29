@@ -9,7 +9,7 @@ function AccountSettings() {
     <div className="flex flex-col items-start gap-4">
       <h2 className="text-2xl font-light text-neutral-900">Account Settings</h2>
       <button
-        className="rounded border border-red-700 py-2 px-3 text-red-700 transition hover:bg-red-700 hover:text-white"
+        className="rounded border border-red-700 px-3 py-2 text-red-700 transition hover:bg-red-700 hover:text-white"
         onClick={modal.show}
       >
         Delete account
