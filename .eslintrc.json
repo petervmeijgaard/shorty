@@ -29,7 +29,7 @@
     "plugin:import/typescript",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:functional/external-recommended",
+    "plugin:functional/external-typescript-recommended",
     "plugin:functional/lite",
     "plugin:functional/stylistic",
     "prettier"
@@ -98,8 +98,9 @@
     ],
     "functional/no-mixed-type": "off",
     "functional/no-return-void": "off",
-    "functional/no-throw-statement": "off",
+    "functional/no-throw-statements": "off",
     "functional/prefer-readonly-type": "off",
+    "functional/prefer-immutable-types": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
